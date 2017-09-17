@@ -1,0 +1,55 @@
+body {
+  background-color: #333;
+}
+
+svg {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  width: 50%;
+  height: auto;
+}
+
+path {
+  fill: #444;
+}
+
+path:hover {
+  cursor: pointer;
+}
+
+.grag:hover {
+  fill: crimson;
+}
+
+.pv:hover {
+  fill: darkblue;
+}
+
+.valong-biomed:hover {
+  fill: limegreen;
+}
+
+.iacs:hover {
+  fill: darkorchid;
+}
+
+.dir:hover {
+  fill: orangered;
+}
+
+.eco:hover {
+  fill: yellow;
+}
+
+.canta:hover {
+  fill: purple;
+}
+
+.bg {
+  fill: #555;
+}
+
+.bg:hover {
+  cursor: default;
+}
