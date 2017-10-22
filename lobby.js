@@ -2,7 +2,7 @@ document.getElementById("code").innerHTML += room_code;
 players = document.getElementById("players")
 
 var interval = setInterval(function(){
-    fetch('http://war-room-server.herokuapp.com/rooms/'+room_code, {
+    fetch('http://localhost:3000/rooms/'+room_code, {
         method: 'get'
     }).then(function(response) {
         response.text().then(function(data){
