@@ -21,7 +21,7 @@ create.onclick = function(){
     room_code = Math.random().toString(36).substring(2, 7);
     fetch('http://localhost:3000/rooms', {
         method: 'POST',
-        body: '{"code": '+room_code+', "size": '+i+'}',
+        body: '{"code": "'+room_code+'", "size": '+i+'}',
         headers: {
             'Content-Type': "application/json"
         }
