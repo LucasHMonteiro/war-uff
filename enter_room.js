@@ -4,7 +4,7 @@ button.onclick = function(){
     name = document.getElementById('name').value;
     console.log(room_code, name);
     if(room_code && name){
-        fetch('http://localhost:3000/rooms/'+room_code+'/players', {
+        fetch('http://war-room-server.herokuapp.com/rooms/'+room_code+'/players', {
             method: 'POST',
             body: '{"name":"'+name+'"}',
             headers: {

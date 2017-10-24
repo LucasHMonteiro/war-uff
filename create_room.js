@@ -19,7 +19,7 @@ plus.onclick = increment;
 create = document.getElementById('create');
 create.onclick = function(){
     room_code = Math.random().toString(36).substring(2, 7);
-    fetch('http://localhost:3000/rooms', {
+    fetch('http://war-room-server.herokuapp.com/rooms', {
         method: 'POST',
         body: '{"code": "'+room_code+'", "size": '+i+'}',
         headers: {
