@@ -1,18 +1,21 @@
-document.getElementById("code").innerHTML += room_code;
-players = document.getElementById("players")
-
-var lobbyInterval = setInterval(function(){
+var dotCounter = 0;
+var waitInterval = setInterval(function(){
+    if(dotCounter < 3){
+        document.getElementById('wait_title').innerHTML += '.';
+        dotCounter++;
+    }else{
+        document.getElementById('wait_title').innerHTML = 'Waiting Game to Start';
+        dotCounter = 0;
+    }
     fetch('http://war-room-server.herokuapp.com/rooms/'+room_code, {
         method: 'get'
     }).then(function(response) {
         response.text().then(function(data){
             room_data = JSON.parse(data);
-            players.innerHTML = room_data.players;
             if(room_data.players.length == room_data.size){
-                clearInterval(lobbyInterval);
-                names = room_data.players
+                clearInterval(waitInterval);
                 $(function(){
-                    $("#content").load("map.html");
+                    $('#content').load("cards.html");
                 });
             }
         });

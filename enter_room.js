@@ -10,6 +10,8 @@ button.onclick = function(){
             headers: {
                 'Content-Type': "application/json"
             }
+        }).then(function(myBlob){
+            $('#content').load("wait_game.html");
         });
     }
 }
