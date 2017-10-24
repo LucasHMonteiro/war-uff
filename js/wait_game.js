@@ -7,7 +7,7 @@ var waitInterval = setInterval(function(){
         document.getElementById('wait_title').innerHTML = 'Waiting Game to Start';
         dotCounter = 0;
     }
-    fetch('http://war-room-server.herokuapp.com/rooms/'+room_code, {
+    fetch('https://war-room-server.herokuapp.com/rooms/'+room_code, {
         method: 'get',
         headers: {
             'Content-Type': "application/json"
