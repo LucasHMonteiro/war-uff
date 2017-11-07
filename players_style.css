@@ -1,0 +1,27 @@
+#player_names {
+	list-style-type: none;
+}
+
+#player0 {
+	color: red;
+}
+
+#player1 {
+	color: purple;
+}
+
+#player2 {
+	color: blue;
+}
+
+#player3 {
+	color: green;
+}
+
+#player4 {
+	color: orange;
+}
+
+#player5 {
+	color: yellow;
+}
