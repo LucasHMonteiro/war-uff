@@ -1,16 +1,22 @@
 $(function(){
-	builder = '';
-	for (var i = 0; i < names.length; i++) {
-		builder += '<li id="player'+i+'">'+names[i]+'</li>'
-	}
-    $("#player_names").html(builder);
+  buildNamesList();
+  document.getElementById('player_names').addEventListener('click', function (e) {
+    if (e.target && e.target.nodeName == 'LI' && !e.target.classList.contains('animated')) {
+      var lis = this.getElementsByTagName('li');
+      for (var index = 0; index < lis.length; index++) {
+        lis[index].classList.remove('animated');
+        lis[index].classList.remove('pulse');
+        lis[index].classList.remove('infinite');
+      }
+      e.target.className += ' animated pulse infinite';
+    }
+  });
 });
 
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+function buildNamesList() {
+  listBuilder = '';
+  for (var i = 0; i < names.length; i++) {
+    listBuilder += '<li id="player' + i + '">' + names[i] + '</li>'
   }
-  return color;
+  $("#player_names").html(listBuilder);
 }

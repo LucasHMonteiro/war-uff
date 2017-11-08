@@ -1,25 +1,45 @@
 #player_names {
+	position: absolute;
+	left: 10;
 	list-style-type: none;
 }
 
+#player_names li {
+	padding: 10px;
+	border: 1px solid;
+	margin-top: 10px;
+	border-radius: 4px;
+	text-align: left;
+}
+
+#player_names li:before {
+	font-family: FontAwesome;
+	content: "\f007";
+	margin-right: 10px;
+}
+
+#player_names li:hover {
+	cursor: pointer;
+}
+
 #player0 {
-	color: red;
+	color: crimson;
 }
 
 #player1 {
-	color: purple;
+	color: dodgerblue;
 }
 
 #player2 {
-	color: blue;
+	color: limegreen;
 }
 
 #player3 {
-	color: green;
+	color: deeppink;
 }
 
 #player4 {
-	color: orange;
+	color: orangered;
 }
 
 #player5 {
