@@ -1,0 +1,83 @@
+.menu {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 200px;
+}
+
+.main_title {
+  width: 1100px;
+  padding-top: 40px;
+  font-size: 200px;
+  background-color: #1a1a1a;
+  border-radius: 20px;
+  margin: 0;
+}
+
+.menu_label {
+  font-size: 50px;
+}
+
+.menu button {
+  color: inherit;
+  font: inherit;
+  margin: 0 30px;
+  margin-top: 50px;
+  border: none;
+  width: 200px;
+  height: 75px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.menu button:hover {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  font-size: 20px;
+  width: 250px;
+  height: 100px;
+  background-color: #414346;
+}
+
+.menu input[type="text"] {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 15px;
+  width: 300px;
+  height: 50px;
+  font: inherit;
+  font-size: 35px;
+  text-transform: uppercase;
+}
+
+.menu_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.set_players {
+  display: flex;
+  align-items: center;
+}
+
+#plus, #minus {
+  width: 75px;
+  margin: 0 80px;
+  margin-bottom: 30px;
+}
+
+#plus:hover, #minus:hover {
+  height: 75px;
+  font: inherit;
+}
+
+#inc {
+  font: inherit;
+  font-size: 80px;
+}
