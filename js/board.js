@@ -43,5 +43,6 @@ function buildterrList() {
 
 function update_terr_view(t){
 	document.getElementsByClassName(t.nome)[0].style.fill = jogadores[t.dono].cor;
+	document.getElementById(t.nome).innerHTML = t.tropas_atuais;
 	$("#terr"+t.nome).html(t.nome +": dono="+ t.dono +" tropas="+ t.tropas_atuais);
 }
