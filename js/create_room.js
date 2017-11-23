@@ -19,14 +19,14 @@ plus.onclick = increment;
 create = document.getElementById('create');
 create.onclick = function(){
     room_code = Math.random().toString(36).substring(2, 7);
-    room_code = room_code.toUpperCase();
-    fetch('https://war-room-server.herokuapp.com/rooms', {
-        method: 'POST',
-        body: '{"code": "'+room_code+'", "size": '+i+'}',
-        headers: {
-            'Content-Type': "application/json"
-        }
-    });
+    room_code = 'mcf8k';//room_code.toUpperCase();
+    // fetch('https://war-room-server.herokuapp.com/rooms', {
+    //     method: 'POST',
+    //     body: '{"code": "'+room_code+'", "size": '+i+'}',
+    //     headers: {
+    //         'Content-Type': "application/json"
+    //     }
+    // });
     $(function(){
         $("#content").load("lobby.html");
     });

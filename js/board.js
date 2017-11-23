@@ -21,11 +21,12 @@ function TurnsManager(players){
       free_territories[index].classList.remove('free_4');
       free_territories[index].classList.remove('free_5');
       free_territories[index].classList.add('free_'+player);
-      free_territories[index].addEventListener('click', function() {
+      free_territories[index].onclick = null;
+      free_territories[index].onclick = function() {
         this.classList.remove('free_' + player);
         this.classList.remove('free');
         this.classList.add('taken_' + player);
-      });
+      }
     }
   }
 
