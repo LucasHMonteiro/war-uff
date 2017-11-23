@@ -45,3 +45,17 @@
 #player5 {
 	color: yellow;
 }
+
+.end_turn {
+	border: 3px solid #616161;
+	border-radius: 5px;
+	font: inherit;
+	background-color: black;
+	color: #616161;
+	position: absolute;
+	width: 200px;
+	height: 75px;
+	bottom: 20;
+	right: 20;
+	cursor: pointer;
+}
