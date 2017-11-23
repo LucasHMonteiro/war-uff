@@ -20,32 +20,28 @@ path:hover {
   cursor: pointer;
 }
 
-.grag:hover {
+.free_0:hover, .taken_0 {
   fill: crimson;
 }
 
-.pv:hover {
+.free_1:hover, .taken_1{
   fill: dodgerblue;
 }
 
-.valong-biomed:hover {
+.free_2:hover, .taken_2{
   fill: limegreen;
 }
 
-.iacs:hover {
+.free_3:hover, .taken_3 {
   fill: deeppink;
 }
 
-.dir:hover {
+.free_4:hover, .taken_4 {
   fill: orangered;
 }
 
-.eco:hover {
+.free_5:hover, .taken_5 {
   fill: yellow;
-}
-
-.canta:hover {
-  fill: purple;
 }
 
 .bg {
