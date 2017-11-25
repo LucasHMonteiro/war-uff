@@ -5,11 +5,23 @@ body {
 }
 
 svg {
+  position: absolute;
   display: block;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
   margin-top: 20px;
   width: 50%;
   height: auto;
+}
+
+.info {
+  position: absolute;
+  display: none;
+  bottom: 30px;
+  left: 30px;
+  font-size: 30px;
 }
 
 path {
