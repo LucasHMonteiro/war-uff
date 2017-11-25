@@ -2,20 +2,24 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 200px;
+  margin-top: 10%;
 }
 
 .main_title {
   width: 1100px;
   padding-top: 40px;
   font-size: 200px;
+  color: #990303;
+  text-shadow: 10px 10px 5px black;
+  box-shadow: 10px 10px 5px black;
   background-color: #1a1a1a;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 0;
 }
 
 .menu_label {
   font-size: 50px;
+  text-shadow: 5px 5px 5px black;
 }
 
 .menu button {
@@ -27,6 +31,7 @@
   width: 200px;
   height: 75px;
   background-color: #1a1a1a;
+  box-shadow: 10px 10px 5px black;
   border-radius: 10px;
   cursor: pointer;
   -webkit-transition: all 0.2s ease;
@@ -53,6 +58,7 @@
   font: inherit;
   font-size: 35px;
   text-transform: uppercase;
+  box-shadow: 5px 5px 5px black;
 }
 
 .menu_form {
@@ -70,11 +76,11 @@
   width: 75px;
   margin: 0 80px;
   margin-bottom: 30px;
+  font-size: 30px;
 }
 
 #plus:hover, #minus:hover {
   height: 75px;
-  font: inherit;
 }
 
 #inc {

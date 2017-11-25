@@ -53,8 +53,9 @@
 	background-color: black;
 	color: #616161;
 	position: absolute;
+	box-shadow: 5px 5px 5px black;
 	width: 200px;
-	height: 75px;
+	height: 60px;
 	bottom: 20;
 	right: 20;
 	cursor: pointer;
