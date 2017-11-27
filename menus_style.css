@@ -87,3 +87,15 @@
   font: inherit;
   font-size: 80px;
 }
+
+.tippy-tooltip.war-theme {
+  background-color: #111111;
+  font-size: 15px;
+}
+
+.tippy-popper[x-placement^=top] .tippy-tooltip.war-theme .tippy-arrow {
+  border-top-color: #111111;
+}
+.tippy-popper[x-placement^=bottom] .tippy-tooltip.war-theme .tippy-arrow {
+  border-bottom-color: #111111;
+}
