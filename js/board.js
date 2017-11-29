@@ -25,19 +25,20 @@ function boardInit() {
   territories_names = Object.keys(territories);
   num_players = names.length;
   territories_per_player = Math.floor(territories_names.length / num_players);
-  for (var i = 0; i < names.length; i++) {
+  mod = territories_names.length % num_players;
+  for (var i = 0; i < names.length + mod; i++) {
     for (var j = 0; j < territories_per_player; j++) {
       target_territory_index = Math.floor(Math.random() * (territories_names.length-1));
       name = territories_names[target_territory_index];
       target_territory = document.getElementsByClassName(name)[0];
-      target_territory.classList.add('taken-'+i);
-      players[names[i]].territories.push(name);
+      target_territory.classList.add('taken-' + i % names.length);
+      players[names[i % names.length]].territories.push(name);
       territories_names.splice(target_territory_index, 1);
       territories[name].troops = 1;
-      territories[name].owner = names[i];
+      territories[name].owner = names[i % names.length];
       updateTerritory(name, tooltips[name]);
     }
-    players[names[i]].calculateTroops();
+    players[names[i % names.length]].calculateTroops();
   }
 }
 
