@@ -47,7 +47,7 @@
 }
 
 .next-phase {
-	border: 3px solid #990303;
+	border: 3px double #990303;
 	border-radius: 5px;
 	font: inherit;
 	background-color: rgba(1, 1, 1, 0);
@@ -81,7 +81,14 @@
 	width: 250px;
 	background: url('old-paper.jpg');
 	background-size: cover;
-	list-style: none;
 	box-shadow: -7px 0 10px black;
 	border-radius: 10px;
+}
+
+#alloc-phase {
+	position: relative;
+	display: inline-block;
+	color: #990303;
+	font-size: 20px;
+	margin-top: 20px;
 }
