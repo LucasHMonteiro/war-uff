@@ -43,7 +43,20 @@ function boardInit() {
 }
 
 turnsManager.firstTurn();
-end_turn = document.getElementsByClassName('next-phase')[0];
-end_turn.addEventListener('click', function() {
-  turnsManager.nextTurn();
+next_turn = document.getElementsByClassName('next-phase')[0];
+next_turn.addEventListener('click', function() {
+  switch (phase) {
+    case 'alloc':
+      phase = 'attack';
+      break;
+    case 'attack':
+      phase = 'realloc';
+      break;
+    case 'realloc':
+      phase = 'alloc';
+      turnsManager.nextTurn();
+      break;
+    default:
+      break;
+  }
 });
