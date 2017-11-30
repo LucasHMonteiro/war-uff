@@ -13,7 +13,7 @@ var lobbyInterval = setInterval(function(){
             players_list.innerHTML = room_data.players.join(', ').toUpperCase();
             if(room_data.players.length == room_data.size){
                 clearInterval(lobbyInterval);
-                names = room_data.players;
+                names = formatNames(room_data.players);
                 for (var index = 0; index < names.length; index++) {
                     players[names[index]] = new Player(names[index], index);
                 }
@@ -28,5 +28,8 @@ var lobbyInterval = setInterval(function(){
 }, 500);
 
 function formatNames(namesArray) {
-    return;
+    for (var index = 0; index < namesArray.length; index++) {
+        namesArray[index] = namesArray[index].toUpperCase();
+    }
+    return namesArray;
 }

@@ -67,6 +67,7 @@
 	height: 100%;
 	width: 200px;
 	background: url('old-paper.jpg');
+	background-position: right 0 bottom 0;
 	list-style: none;
 	box-shadow: -7px 0 10px black;
 }
