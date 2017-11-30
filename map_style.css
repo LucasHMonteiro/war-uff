@@ -33,6 +33,10 @@ path:hover {
   cursor: pointer;
 }
 
+path:focus {
+  outline: 0;
+}
+
 .free-0:hover, .taken-0 {
   fill: crimson;
 }
