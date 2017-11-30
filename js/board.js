@@ -43,6 +43,7 @@ function boardInit() {
 }
 
 turnsManager.firstTurn();
+turnsManager.showAllocMenu();
 next_turn = document.getElementsByClassName('next-phase')[0];
 next_turn.addEventListener('click', function() {
   switch (phase) {
@@ -53,13 +54,18 @@ next_turn.addEventListener('click', function() {
     case 'attack':
       console.log('oi2')
       phase = 'realloc';
+      turnsManager.showReallocMenuIntro();
       break;
     case 'realloc':
       console.log('oi3')
       phase = 'alloc';
+      turnsManager.showAllocMenu();
       turnsManager.nextTurn();
       break;
     default:
       break;
   }
 });
+
+
+

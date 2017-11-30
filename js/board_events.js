@@ -96,3 +96,31 @@ function alloc(territory) {
         updateTerritory(territory, tooltips[territory]);
     }
 }
+
+function realloc_menu(territory) {
+    cancel_realloc = document.getElementById('cancel-realloc');
+    cancel_realloc.addEventListener('click', function() {
+      turnsManager.showReallocMenuIntro();
+    });
+    var realloc_troops = 0;
+    function inc_realloc_troops() {
+        if(realloc_troops < territories[territory].troops - 1) realloc_troops++;
+        document.getElementById('realloc-troops').innerHTML = realloc_troops;
+    }
+    function dec_realloc_troops() {
+        if(realloc_troops > 0) realloc_troops--;
+        document.getElementById('realloc-troops').innerHTML = realloc_troops;
+    }
+    
+    document.getElementById('minus-realloc').addEventListener('click', function(){
+        dec_realloc_troops();
+      });
+    document.getElementById('plus-realloc').addEventListener('click', function(){
+      inc_realloc_troops();
+    });
+    // plus_button = document.getElementsByClassName('plus-realloc')[0].addEventListener('click', function() {
+      
+    // });
+    // minus_button = document.getElementsByClassName('minus-realloc')[0].style.display = 'none';
+    
+}

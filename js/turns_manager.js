@@ -11,7 +11,6 @@ function TurnsManager(players_names){
       li_names[index].classList.remove('infinite');
     }
     li_names[player].className += ' animated pulse infinite';
-    this.showAllocMenu();
     territory_html_objects = document.getElementsByClassName('territory');
     for (let index = 0; index < territory_html_objects.length; index++) {
       self = this;
@@ -26,8 +25,11 @@ function TurnsManager(players_names){
           case 'attack':
             break;
           case 'realloc':
-            
-          break;
+            if(this.classList.contains('taken-'+turnsManager.currentPlayer))
+               self.showReallocMenuOptions();
+               realloc_menu(this.classList[0]);
+
+            break;
           default:
             break;
         }
@@ -53,5 +55,29 @@ function TurnsManager(players_names){
     menu.style.display = 'inline-block';
     document.getElementById('attack-phase').style.display = 'none';
     document.getElementById('realloc-phase').style.display = 'none';
+  }
+
+  this.showReallocMenuIntro = function () {
+    menu = document.getElementById('realloc-phase');
+    menu.innerHTML = 'Escolha seu Território ';
+    menu.style.display = 'inline-block';
+    document.getElementById('attack-phase').style.display = 'none';
+    document.getElementById('alloc-phase').style.display = 'none';
+    document.getElementById('realloc-troops').style.display = 'none';
+    document.getElementById('cancel-realloc').style.display = 'none';
+    document.getElementById('confirm-realloc').style.display = 'none';
+    document.getElementById('plus-realloc').style.display = 'none';
+    document.getElementById('minus-realloc').style.display = 'none';
+    
+  }
+
+  this.showReallocMenuOptions = function(){
+    document.getElementById('realloc-phase').innerHTML = 'Escolha quantas tropas ';
+    document.getElementById('realloc-troops').style.display = 'inline-block';
+    document.getElementById('cancel-realloc').style.display = 'inline-block';
+    document.getElementById('confirm-realloc').style.display = 'inline-block';
+    document.getElementById('plus-realloc').style.display = 'inline-block';
+    document.getElementById('minus-realloc').style.display = 'inline-block';
+  
   }
 }
