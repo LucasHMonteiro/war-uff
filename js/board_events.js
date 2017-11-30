@@ -1,36 +1,22 @@
-svg = document.getElementsByTagName('svg')[0];
-paths = svg.getElementsByTagName('path');
-for (var index = 0; index < paths.length; index++) {
-    path = paths[index];
-    if (!path.classList.contains('bg')){
-        path.addEventListener('mouseover', function() {
-            c_name = this.classList[0];
-            document.getElementById(c_name+'-info').style.display = 'block';
-        });
-        path.addEventListener('mouseout', function () {
-            c_name = this.classList[0];
-            document.getElementById(c_name + '-info').style.display = 'none';
-        });
-    }
-}
-
 function updateTerritory(objClass, territory){
     t = territories[objClass];
-    territory.innerHTML += '<p>'+t.owner+'</p>'+'<p>Tropas: '+t.troops+'</p>';
+    territory.innerHTML = '<p>'+territories_true_names[objClass]+'</p>'+'<p>'+t.owner+'</p>'+'<p>Tropas: '+t.troops+'</p>';
 }
 
-grag = document.querySelector('#grag-tooltip'); updateTerritory('grag', grag);
-pv = document.querySelector('#pv-tooltip'); updateTerritory('pv', pv);
-eco = document.querySelector('#eco-tooltip'); updateTerritory('eco', eco);
-valong = document.querySelector('#valong-tooltip'); updateTerritory('valong', valong);
-canta = document.querySelector('#canta-tooltip'); updateTerritory('canta', canta);
-dir = document.querySelector('#dir-tooltip'); updateTerritory('dir', dir);
-iacs1 = document.querySelector('#iacs1-tooltip'); updateTerritory('iacs1', iacs1);
-iacs2 = document.querySelector('#iacs2-tooltip'); updateTerritory('iacs2', iacs2);
-biomed = document.querySelector('#biomed-tooltip'); updateTerritory('biomed', biomed);
+tooltips = new Array();
+
+tooltips['grag'] = document.querySelector('#grag-tooltip'); updateTerritory('grag', tooltips['grag']);
+tooltips['pv'] = document.querySelector('#pv-tooltip'); updateTerritory('pv', tooltips['pv']);
+tooltips['eco'] = document.querySelector('#eco-tooltip'); updateTerritory('eco', tooltips['eco']);
+tooltips['valong'] = document.querySelector('#valong-tooltip'); updateTerritory('valong', tooltips['valong']);
+tooltips['canta'] = document.querySelector('#canta-tooltip'); updateTerritory('canta', tooltips['canta']);
+tooltips['dir'] = document.querySelector('#dir-tooltip'); updateTerritory('dir', tooltips['dir']);
+tooltips['iacs1'] = document.querySelector('#iacs1-tooltip'); updateTerritory('iacs1', tooltips['iacs1']);
+tooltips['iacs2'] = document.querySelector('#iacs2-tooltip'); updateTerritory('iacs2', tooltips['iacs2']);
+tooltips['biomed'] = document.querySelector('#biomed-tooltip'); updateTerritory('biomed', tooltips['biomed']);
 
 tippy('.grag', {
-    html: grag,
+    html: tooltips['grag'],
     arrow: true,
     animation: 'fade',
     distance: -40,
@@ -38,7 +24,7 @@ tippy('.grag', {
     theme: 'war'
 });
 tippy('.pv', {
-    html: pv,
+    html: tooltips['pv'],
     arrow: true,
     animation: 'fade',
     distance: -50,
@@ -46,7 +32,7 @@ tippy('.pv', {
     theme: 'war'
 });
 tippy('.eco', {
-    html: eco,
+    html: tooltips['eco'],
     arrow: true,
     animation: 'fade',
     distance: 15,
@@ -54,7 +40,7 @@ tippy('.eco', {
     theme: 'war'
 });
 tippy('.valong', {
-    html: valong,
+    html: tooltips['valong'],
     arrow: true,
     animation: 'fade',
     distance: 15,
@@ -62,7 +48,7 @@ tippy('.valong', {
     theme: 'war'
 });
 tippy('.canta', {
-    html: canta,
+    html: tooltips['canta'],
     arrow: true,
     animation: 'fade',
     distance: 15,
@@ -70,7 +56,7 @@ tippy('.canta', {
     theme: 'war'
 });
 tippy('.dir', {
-    html: dir,
+    html: tooltips['dir'],
     arrow: true,
     animation: 'fade',
     distance: 15,
@@ -78,7 +64,7 @@ tippy('.dir', {
     theme: 'war'
 });
 tippy('.iacs1', {
-    html: iacs1,
+    html: tooltips['iacs1'],
     arrow: true,
     animation: 'fade',
     distance: 15,
@@ -86,7 +72,7 @@ tippy('.iacs1', {
     theme: 'war'
 });
 tippy('.iacs2', {
-    html: iacs2,
+    html: tooltips['iacs2'],
     arrow: true,
     animation: 'fade',
     distance: 15,
@@ -94,10 +80,19 @@ tippy('.iacs2', {
     theme: 'war'
 });
 tippy('.biomed', {
-    html: biomed,
+    html: tooltips['biomed'],
     arrow: true,
     animation: 'fade',
     distance: 15,
     arrowTransform: 'scale(2)',
     theme: 'war'
 });
+
+function alloc(territory) {
+    player = players[names[turnsManager.currentPlayer]]
+    if(player.troops > 0 && player.territories.indexOf(territory) != -1){
+        territories[territory].troops += 1;
+        player.troops -= 1;
+        updateTerritory(territory, tooltips[territory]);
+    }
+}
