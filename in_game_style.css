@@ -92,3 +92,11 @@
 	font-size: 20px;
 	margin-top: 20px;
 }
+
+#realloc-phase {
+	position: relative;
+	display: inline-block;
+	color: #990303;
+	font-size: 20px;
+	margin-top: 20px;
+}

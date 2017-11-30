@@ -26,7 +26,8 @@ function TurnsManager(players_names){
           case 'attack':
             break;
           case 'realloc':
-            break;
+            
+          break;
           default:
             break;
         }
@@ -35,13 +36,15 @@ function TurnsManager(players_names){
   }
 
   this.firstTurn = function () {
-    this.currentPlayer = 0;
-    this.setTurn(0);
+    this.currentPlayer = players_names.length - 1;
+    this.setTurn(players_names.length - 1);
   }
 
   this.nextTurn = function () {
-    this.currentPlayer = (this.currentPlayer + 1) % this.players_names.length;
-    this.setTurn(this.currentPlayer);
+    if (this.currentPlayer == 0){
+     this.currentPlayer = players_names.length - 1;
+    }else this.currentPlayer -= 1;
+     this.setTurn(this.currentPlayer);
   }
 
   this.showAllocMenu = function() {
