@@ -10,10 +10,11 @@ var lobbyInterval = setInterval(function(){
     }).then(function(response) {
         response.text().then(function(data){
             room_data = JSON.parse(data);
-            players_list.innerHTML = room_data.players.join(', ').toUpperCase();
-            if(room_data.players.length == room_data.size){
+            players_array = Object.entries(room_data.players).map(p => p[1].name);
+            players_list.innerHTML = players_array.join(', ').toUpperCase();
+            if(players_array.length == room_data.size){
                 clearInterval(lobbyInterval);
-                names = formatNames(room_data.players);
+                names = formatNames(players_array);
                 for (var index = 0; index < names.length; index++) {
                     players[names[index]] = new Player(names[index], index);
                 }

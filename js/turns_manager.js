@@ -115,7 +115,7 @@ function TurnsManager(players_names) {
     menu.style.display = 'inline-block';
     document.getElementById('attack-phase').style.display = 'none';
     document.getElementById('alloc-phase').style.display = 'none';
-    //document.getElementById('support-menu').style.display = 'inline-block';
+    //document.getElementById('support-menu').style.display = 'none';
     document.getElementById('support-troops').style.display = 'none';
     document.getElementById('support-cancel').style.display = 'none';
     document.getElementById('support-confirm').style.display = 'none';
@@ -128,7 +128,6 @@ function TurnsManager(players_names) {
   this.showSupportMenu = function () {
     document.getElementById('realloc-phase').innerHTML = 'Escolha destino ';
 //    document.getElementById('support-menu').style.display = 'inline-block';
-    
     document.getElementById('support-origin').style.display = 'inline-block';
     document.getElementById('support-destiny').style.display = 'inline-block';
     document.getElementById('support-troops').style.display = 'inline-block';

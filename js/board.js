@@ -62,9 +62,9 @@ next_turn.addEventListener('click', function() {
     case 'realloc':
       console.log('Alloc')
       phase = 'alloc';
-      turnsManager.showAllocMenu();
       turnsManager.nextTurn();
       players[names[turnsManager.currentPlayer]].calculateTroops();
+      turnsManager.showAllocMenu();
       break;
     default:
       break;

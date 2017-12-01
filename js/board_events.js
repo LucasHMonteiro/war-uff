@@ -159,19 +159,26 @@ function realloc_menu() {
 function roll_dices(attack, defense) {
     attack_rolls = [];
     defense_rolls = [];
+    show_dice_atk = document.getElementById('dice_atk');
+    show_dice_def = document.getElementById('dice_def');
+    show_dice_atk.innerHTML = "Dados de Ataque";
+    show_dice_def.innerHTML = "Dados de Defesa";
     for (var i = 0; i < defense; i++) {
         var roll = Math.floor((Math.random() * 6) + 1);
         defense_rolls.push(roll);
-        console.log("Def: " + roll);
     }
     for (var j = 0; j < attack; j++) {
         var roll = Math.floor((Math.random() * 6) + 1);
         attack_rolls.push(roll);
-        console.log("Atk: " + roll);
     }
     attack_rolls.reverse(attack_rolls.sort());
     defense_rolls.reverse(defense_rolls.sort());
+    show_dice_atk.innerHTML = attack_rolls;
+    show_dice_atk.style.display = 'inline-block';
+    show_dice_def.innerHTML = defense_rolls;
+    show_dice_def.style.display = 'inline-block';
     num_checks = Math.min(defense, attack);
+    console.log(show_dice_atk.innerHTML + " D  " + show_dice_def.innerHTML );
     win_rolls = 0;
     for (var k = 0; k < num_checks; k++) {
         if (attack_rolls[k] > defense_rolls[k]) win_rolls++;
@@ -194,14 +201,13 @@ function attack_confirm() {
             console.log(win_rolls);
             if (win_rolls >= troops_defending) {
                 defender_name = territories[destiny].owner;
-                console.log(defender_name);
                 players[defender_name].territories.splice(players[defender_name].territories.indexOf(destiny),1);
                 territories[destiny].owner = names[turnsManager.currentPlayer];
                 territories[destiny].troops = win_rolls;
                 territories[origin].troops -= troops_attacking;
                 players[names[turnsManager.currentPlayer]].territories.push(destiny);
                 target_territory = document.getElementsByClassName(destiny)[0];
-                console.log(target_territory + " Atual: "+ turnsManager.currentPlayer);
+                target_territory.classList.remove('taken-' + names.indexOf(defender_name));
                 target_territory.classList.add('taken-' + turnsManager.currentPlayer);
             } else {
                 territories[destiny].troops -= win_rolls;
