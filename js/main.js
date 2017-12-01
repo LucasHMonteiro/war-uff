@@ -13,13 +13,6 @@ territories = {
     'iacs2': new Territory('iacs2')
 };
 
-territories['grag'].setAdjacent('valong'); territories['grag'].setAdjacent('canta');
-territories['biomed'].setAdjacent('valong');
-territories['canta'].setAdjacent('iacs1'); territories['canta'].setAdjacent('pv');
-territories['iacs1'].setAdjacent('eco');
-territories['eco'].setAdjacent('iacs2'); territories['eco'].setAdjacent('dir');
-territories['pv'].setAdjacent('dir'); territories['pv'].setAdjacent('iacs1');
-
 territories_true_names = {
     'grag': 'Gragoatá',
     'pv': 'Praia Vermelha',
