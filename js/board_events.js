@@ -1,6 +1,6 @@
-function updateTerritory(objClass, territory){
+function updateTerritory(objClass, territory) {
     t = territories[objClass];
-    territory.innerHTML = '<p>'+territories_true_names[objClass]+'</p>'+'<p>'+t.owner+'</p>'+'<p>Tropas: '+t.troops+'</p>';
+    territory.innerHTML = '<p>' + territories_true_names[objClass] + '</p>' + '<p>' + t.owner + '</p>' + '<p>Tropas: ' + t.troops + '</p>';
 }
 
 tooltips = new Array();
@@ -90,37 +90,46 @@ tippy('.biomed', {
 
 function alloc(territory) {
     player = players[names[turnsManager.currentPlayer]]
-    if(player.troops > 0 && player.territories.indexOf(territory) != -1){
+    if (player.troops > 0 && player.territories.indexOf(territory) != -1) {
         territories[territory].troops += 1;
         player.troops -= 1;
         updateTerritory(territory, tooltips[territory]);
     }
 }
 
-function realloc_menu(territory) {
-    cancel_realloc = document.getElementById('cancel-realloc');
-    cancel_realloc.addEventListener('click', function() {
-      turnsManager.showReallocMenuIntro();
+function realloc_menu(origin) {
+    document.getElementById('cancel-realloc').addEventListener('click', function () {;
+        turnsManager.showReallocMenuIntro();
+        document.getElementById('realloc-troops').innerHTML = 0;
+        turnsManager.selected_territories = 0;
     });
     var realloc_troops = 0;
     function inc_realloc_troops() {
-        if(realloc_troops < territories[territory].troops - 1) realloc_troops++;
+        if (realloc_troops < territories[origin].troops - 1) realloc_troops++;
         document.getElementById('realloc-troops').innerHTML = realloc_troops;
     }
     function dec_realloc_troops() {
-        if(realloc_troops > 0) realloc_troops--;
+        if (realloc_troops > 0) realloc_troops--;
         document.getElementById('realloc-troops').innerHTML = realloc_troops;
     }
-    
-    document.getElementById('minus-realloc').addEventListener('click', function(){
+
+    document.getElementById('minus-realloc').addEventListener('click', function () {
         dec_realloc_troops();
-      });
-    document.getElementById('plus-realloc').addEventListener('click', function(){
-      inc_realloc_troops();
     });
-    // plus_button = document.getElementsByClassName('plus-realloc')[0].addEventListener('click', function() {
-      
-    // });
-    // minus_button = document.getElementsByClassName('minus-realloc')[0].style.display = 'none';
-    
+    document.getElementById('plus-realloc').addEventListener('click', function () {
+        inc_realloc_troops();
+    });
+}
+
+function realloc_confirm(origin, destiny) {
+    document.getElementById('confirm-realloc').addEventListener('click', function () {
+        troops_moving = parseInt(document.getElementById('realloc-troops').innerHTML);
+        territories[origin].troops -= troops_moving;
+        territories[destiny].troops += troops_moving;
+        updateTerritory(origin, tooltips[origin]);
+        updateTerritory(destiny, tooltips[destiny]);
+        turnsManager.showReallocMenuIntro();
+        document.getElementById('realloc-troops').innerHTML = 0;
+        turnsManager.selected_territories = 0;
+    });
 }

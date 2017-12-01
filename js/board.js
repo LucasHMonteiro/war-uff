@@ -49,15 +49,15 @@ next_turn.addEventListener('click', function() {
   switch (phase) {
     case 'alloc':
       phase = 'attack';
-      console.log('oi')
+      console.log('Attack')
       break;
     case 'attack':
-      console.log('oi2')
+      console.log('Realloc')
       phase = 'realloc';
       turnsManager.showReallocMenuIntro();
       break;
     case 'realloc':
-      console.log('oi3')
+      console.log('Alloc')
       phase = 'alloc';
       turnsManager.showAllocMenu();
       turnsManager.nextTurn();

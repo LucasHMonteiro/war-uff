@@ -60,20 +60,6 @@
 	cursor: pointer;
 }
 
-.cancel-realloc {
-	border: 3px double #990303;
-	border-radius: 5px;
-	font: inherit;
-	background-color: rgba(1, 1, 1, 0);
-	color: #990303;
-	position: absolute;
-	width: 100px;
-	height: 50px;
-	bottom: 20;
-	left: 20;
-	cursor: pointer;
-}
-
 .confirm-realloc {
 	border: 3px double #990303;
 	border-radius: 5px;
@@ -86,14 +72,14 @@
 	bottom: 20;
 	left: 125;
 	cursor: pointer;
-}
+} 
 
 #plus-realloc, #minus-realloc {
 	width: 75px;
 	margin: 0 80px;
 	margin-bottom: 20px;
 	font-size: 30px;
-  }
+  } 
 
 #log-sidebar {
 	margin: 0;
@@ -128,7 +114,7 @@
 	margin-top: 20px;
 }
 
-#realloc-phase {
+ #realloc-phase {
 	position: relative;
 	display: inline-block;
 	color: #990303;
@@ -136,7 +122,7 @@
 	margin-top: 20px;
 }
 
-#realloc-troops {
+.realloc-troops {
 	color: #990303;
-	font-size: 20px;
-}
+	font-size: 50px;
+} 
