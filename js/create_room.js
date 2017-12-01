@@ -31,10 +31,10 @@ create.onclick = function(){
         $("#content").load("lobby.html");
     });
 }
-// create.onclick = function () {
-//     room_code = Math.random().toString(36).substring(2, 7);
-//     room_code = '5beq3';
-//     $(function () {
-//         $("#content").load("lobby.html");
-//     });
-// }
+//  create.onclick = function () {
+//      room_code = Math.random().toString(36).substring(2, 7);
+//      room_code = '5beq3';
+//      $(function () {
+//          $("#content").load("lobby.html");
+//      });
+//  }

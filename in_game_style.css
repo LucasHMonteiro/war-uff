@@ -47,7 +47,7 @@
 }
 
 .next-phase {
-	border: 3px solid #990303;
+	border: 3px double #990303;
 	border-radius: 5px;
 	font: inherit;
 	background-color: rgba(1, 1, 1, 0);
@@ -59,6 +59,68 @@
 	right: 20;
 	cursor: pointer;
 }
+
+#confirm-realloc {
+	border: 3px double #990303;
+	border-radius: 5px;
+	font: inherit;
+	background-color: rgba(1, 1, 1, 0);
+	color: #990303;
+	position: absolute;
+	width: 100px;
+	height: 50px;
+	bottom: 20;
+	left: 125;
+	cursor: pointer;
+} 
+
+#cancel-realloc {
+	border: 3px double #990303;
+	border-radius: 5px;
+	font: inherit;
+	background-color: rgba(1, 1, 1, 0);
+	color: #990303;
+	position: absolute;
+	width: 100px;
+	height: 50px;
+	bottom: 20;
+	left: 20;
+	cursor: pointer;
+} 
+
+#plus-realloc{
+    width: 30px;
+	height: 30px;
+    font-size: 15px;
+    color:#990303;
+	position: absolute;
+    background-color: rgba(1, 1, 1, 0); 
+	border: 3px double #990303;
+	bottom: 200;
+	left: 180;
+	border-radius: 5px;
+}
+
+#realloc-troops {
+	color: #990303;
+	font-size: 50px;
+	bottom: 185;
+	left: 110;
+	position: absolute;
+} 
+
+#minus-realloc {
+	width: 30px;
+	height: 30px;
+	bottom: 30px;
+	font-size: 15px;
+	position: absolute;
+	color:#990303;
+	background-color: rgba(1, 1, 1, 0); 
+	bottom: 200;
+	left: 40;
+	border: 3px double #990303;
+} 
 
 #log-sidebar {
 	margin: 0;
@@ -81,7 +143,39 @@
 	width: 250px;
 	background: url('old-paper.jpg');
 	background-size: cover;
-	list-style: none;
 	box-shadow: -7px 0 10px black;
 	border-radius: 10px;
 }
+
+#alloc-phase {
+	position: relative;
+	display: inline-block;
+	color: #990303;
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+#realloc-phase {
+	position: relative;
+	display: inline-block;
+	color: #990303;
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+#realloc-origin {
+	color: #990303;
+	font-size: 20px;
+	bottom: 300;
+	left: 20;
+	position: absolute;
+} 
+
+#realloc-destiny {
+	color: #990303;
+	font-size: 20px;
+	bottom: 270;
+	left: 20;
+	position: absolute;
+} 
+

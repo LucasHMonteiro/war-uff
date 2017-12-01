@@ -43,7 +43,30 @@ function boardInit() {
 }
 
 turnsManager.firstTurn();
-end_turn = document.getElementsByClassName('next-phase')[0];
-end_turn.addEventListener('click', function() {
-  turnsManager.nextTurn();
+turnsManager.showAllocMenu();
+next_turn = document.getElementsByClassName('next-phase')[0];
+next_turn.addEventListener('click', function() {
+  switch (phase) {
+    case 'alloc':
+      if(players[names[turnsManager.currentPlayer]].troops == 0) phase = 'attack';
+      console.log('Attack')
+      break;
+    case 'attack':
+      console.log('Realloc')
+      phase = 'realloc';
+      turnsManager.showReallocMenuIntro();
+      break;
+    case 'realloc':
+      console.log('Alloc')
+      phase = 'alloc';
+      turnsManager.showAllocMenu();
+      turnsManager.nextTurn();
+      players[names[turnsManager.currentPlayer]].calculateTroops();
+      break;
+    default:
+      break;
+  }
 });
+
+
+
