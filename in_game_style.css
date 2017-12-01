@@ -60,7 +60,7 @@
 	cursor: pointer;
 }
 
-#confirm-realloc {
+#support-confirm {
 	border: 3px double #990303;
 	border-radius: 5px;
 	font: inherit;
@@ -74,7 +74,7 @@
 	cursor: pointer;
 } 
 
-#cancel-realloc {
+#support-cancel {
 	border: 3px double #990303;
 	border-radius: 5px;
 	font: inherit;
@@ -88,7 +88,7 @@
 	cursor: pointer;
 } 
 
-#plus-realloc{
+#support-plus{
     width: 30px;
 	height: 30px;
     font-size: 15px;
@@ -101,7 +101,7 @@
 	border-radius: 5px;
 }
 
-#realloc-troops {
+#support-troops {
 	color: #990303;
 	font-size: 50px;
 	bottom: 185;
@@ -109,7 +109,7 @@
 	position: absolute;
 } 
 
-#minus-realloc {
+#support-minus {
 	width: 30px;
 	height: 30px;
 	bottom: 30px;
@@ -147,6 +147,15 @@
 	border-radius: 10px;
 }
 
+#realloc-menu {
+	position: absolute;
+	left: 40px;
+	bottom: 40px;
+	height: 40%;
+	width: 250px;
+	background-color: rgba(1, 1, 1, 0);
+}
+
 #alloc-phase {
 	position: relative;
 	display: inline-block;
@@ -162,8 +171,15 @@
 	font-size: 20px;
 	margin-top: 20px;
 }
+#attack-phase {
+	position: relative;
+	display: inline-block;
+	color: #990303;
+	font-size: 20px;
+	margin-top: 20px;
+}
 
-#realloc-origin {
+#support-origin {
 	color: #990303;
 	font-size: 20px;
 	bottom: 300;
@@ -171,7 +187,7 @@
 	position: absolute;
 } 
 
-#realloc-destiny {
+#support-destiny {
 	color: #990303;
 	font-size: 20px;
 	bottom: 270;

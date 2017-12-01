@@ -92,8 +92,8 @@ function true_name_to_code_name(territory) {
     territories_names = Object.keys(territories_true_names)
     for (var index = 0; index < territories_names.length; index++) {
         if (territories_true_names[territories_names[index]] == territory) return territories_names[index];
-
     }
+    return "Erro."
 }
 
 function alloc(territory) {
@@ -105,48 +105,133 @@ function alloc(territory) {
     }
 }
 
-function realloc_menu() {
-    document.getElementById('cancel-realloc').addEventListener('click', function () {
-        ;
+function attack_menu() {
+    document.getElementById('support-cancel').addEventListener('click', function () {
         turnsManager.showReallocMenuIntro();
-        document.getElementById('realloc-troops').innerHTML = 0;
-        document.getElementById('realloc-origin').innerHTML = "Origem";
-        document.getElementById('realloc-destiny').innerHTML = "Destino";
+        document.getElementById('support-troops').innerHTML = 0;
+        document.getElementById('support-origin').innerHTML = "Origem";
+        document.getElementById('support-destiny').innerHTML = "Destino";
         turnsManager.selected_territories = 0;
     });
-    var realloc_troops = 0;
-
+    var attack_troops = 0;
     function inc_realloc_troops() {
-        if (realloc_troops < territories[true_name_to_code_name(document.getElementById('realloc-origin').innerHTML)].troops - 1) realloc_troops++;
-        document.getElementById('realloc-troops').innerHTML = realloc_troops;
+        if ((attack_troops < territories[true_name_to_code_name(document.getElementById('support-origin').innerHTML)].troops - 1) && attack_troops < 3) attack_troops++;
+        document.getElementById('support-troops').innerHTML = attack_troops;
     }
     function dec_realloc_troops() {
-        if (realloc_troops > 0) realloc_troops--;
-        document.getElementById('realloc-troops').innerHTML = realloc_troops;
+        if (attack_troops > 0) attack_troops--;
+        document.getElementById('support-troops').innerHTML = attack_troops;
     }
-
-    document.getElementById('minus-realloc').addEventListener('click', function () {
+    document.getElementById('support-minus').addEventListener('click', function () {
         dec_realloc_troops();
     });
-    document.getElementById('plus-realloc').addEventListener('click', function () {
+    document.getElementById('support-plus').addEventListener('click', function () {
         inc_realloc_troops();
     });
 }
 
+function realloc_menu() {
+    document.getElementById('support-cancel').addEventListener('click', function () {
+        turnsManager.showReallocMenuIntro();
+        document.getElementById('support-troops').innerHTML = 0;
+        document.getElementById('support-origin').innerHTML = "Origem";
+        document.getElementById('support-destiny').innerHTML = "Destino";
+        turnsManager.selected_territories = 0;
+    });
+    var realloc_troops = 0;
+    function inc_realloc_troops() {
+        if (realloc_troops < territories[true_name_to_code_name(document.getElementById('support-origin').innerHTML)].troops - 1) realloc_troops++;
+        document.getElementById('support-troops').innerHTML = realloc_troops;
+    }
+    function dec_realloc_troops() {
+        if (realloc_troops > 0) realloc_troops--;
+        document.getElementById('support-troops').innerHTML = realloc_troops;
+    }
+
+    document.getElementById('support-minus').addEventListener('click', function () {
+        dec_realloc_troops();
+    });
+    document.getElementById('support-plus').addEventListener('click', function () {
+        inc_realloc_troops();
+    });
+}
+
+function roll_dices(attack, defense) {
+    attack_rolls = [];
+    defense_rolls = [];
+    for (var i = 0; i < defense; i++) {
+        var roll = Math.floor((Math.random() * 6) + 1);
+        defense_rolls.push(roll);
+        console.log("Def: " + roll);
+    }
+    for (var j = 0; j < attack; j++) {
+        var roll = Math.floor((Math.random() * 6) + 1);
+        attack_rolls.push(roll);
+        console.log("Atk: " + roll);
+    }
+    attack_rolls.reverse(attack_rolls.sort());
+    defense_rolls.reverse(defense_rolls.sort());
+    num_checks = Math.min(defense, attack);
+    win_rolls = 0;
+    for (var k = 0; k < num_checks; k++) {
+        if (attack_rolls[k] > defense_rolls[k]) win_rolls++;
+    }
+    return win_rolls++;
+}
+
+function attack_confirm() {
+    document.getElementById('support-confirm').addEventListener('click', function () {
+        troops_attacking = parseInt(document.getElementById('support-troops').innerHTML);
+        if (troops_attacking > 0) {
+            origin = true_name_to_code_name(document.getElementById('support-origin').innerHTML);
+            destiny = true_name_to_code_name(document.getElementById('support-destiny').innerHTML);
+            if (territories[destiny].troops >= 3) {
+                troops_defending = 3;
+            } else {
+                troops_defending = territories[destiny].troops;
+            }
+            win_rolls = roll_dices(troops_attacking, troops_defending);
+            console.log(win_rolls);
+            if (win_rolls >= troops_defending) {
+                defender_name = territories[destiny].owner;
+                console.log(defender_name);
+                players[defender_name].territories.splice(players[defender_name].territories.indexOf(destiny),1);
+                territories[destiny].owner = names[turnsManager.currentPlayer];
+                territories[destiny].troops = win_rolls;
+                territories[origin].troops -= troops_attacking;
+                players[names[turnsManager.currentPlayer]].territories.push(destiny);
+                target_territory = document.getElementsByClassName(destiny)[0];
+                console.log(target_territory + " Atual: "+ turnsManager.currentPlayer);
+                target_territory.classList.add('taken-' + turnsManager.currentPlayer);
+            } else {
+                territories[destiny].troops -= win_rolls;
+                territories[origin].troops -= troops_attacking - win_rolls;
+            }
+            updateTerritory(origin, tooltips[origin]);
+            updateTerritory(destiny, tooltips[destiny]);
+            turnsManager.showReallocMenuIntro();
+            document.getElementById('support-troops').innerHTML = 0;
+            document.getElementById('support-origin').innerHTML = "Origem";
+            document.getElementById('support-destiny').innerHTML = "Destino";
+            turnsManager.selected_territories = 0;
+        }
+    });
+}
+
 function realloc_confirm() {
-    document.getElementById('confirm-realloc').addEventListener('click', function () {
-        troops_moving = parseInt(document.getElementById('realloc-troops').innerHTML);
+    document.getElementById('support-confirm').addEventListener('click', function () {
+        troops_moving = parseInt(document.getElementById('support-troops').innerHTML);
         if (troops_moving > 0) {
-            origin = true_name_to_code_name(document.getElementById('realloc-origin').innerHTML);
-            destiny = true_name_to_code_name(document.getElementById('realloc-destiny').innerHTML);
+            origin = true_name_to_code_name(document.getElementById('support-origin').innerHTML);
+            destiny = true_name_to_code_name(document.getElementById('support-destiny').innerHTML);
             territories[origin].troops -= troops_moving;
             territories[destiny].troops += troops_moving;
             updateTerritory(origin, tooltips[origin]);
             updateTerritory(destiny, tooltips[destiny]);
             turnsManager.showReallocMenuIntro();
-            document.getElementById('realloc-troops').innerHTML = 0;
-            document.getElementById('realloc-origin').innerHTML = "Origem";
-            document.getElementById('realloc-destiny').innerHTML = "Destino";
+            document.getElementById('support-troops').innerHTML = 0;
+            document.getElementById('support-origin').innerHTML = "Origem";
+            document.getElementById('support-destiny').innerHTML = "Destino";
             turnsManager.selected_territories = 0;
         }
     });

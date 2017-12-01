@@ -48,8 +48,11 @@ next_turn = document.getElementsByClassName('next-phase')[0];
 next_turn.addEventListener('click', function() {
   switch (phase) {
     case 'alloc':
-      if(players[names[turnsManager.currentPlayer]].troops == 0) phase = 'attack';
-      console.log('Attack')
+      if(players[names[turnsManager.currentPlayer]].troops == 0){
+        phase = 'attack';
+        turnsManager.showAttackMenuIntro();
+        console.log('Attack')
+      } 
       break;
     case 'attack':
       console.log('Realloc')

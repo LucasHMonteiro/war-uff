@@ -24,17 +24,34 @@ function TurnsManager(players_names) {
             self.showAllocMenu();
             break;
           case 'attack':
+            if (self.selected_territories == 0) {
+              if (this.classList.contains('taken-' + turnsManager.currentPlayer) && territories[this.classList[0]].troops > 1) {
+                self.selected_territories = 1;
+                self.showSupportMenu();
+                document.getElementById('support-origin').innerHTML = territories_true_names[this.classList[0]];
+                attack_menu();
+              }
+            } else {
+              if (!(this.classList.contains('taken-' + turnsManager.currentPlayer)) &&
+                territories[true_name_to_code_name(document.getElementById('support-origin').innerHTML)].adjacents.indexOf(territories[this.classList[0]]) != -1) {
+                  document.getElementById('support-destiny').innerHTML = territories_true_names[this.classList[0]];
+                  attack_confirm();
+              }
+
+            }
             break;
           case 'realloc':
             if (this.classList.contains('taken-' + turnsManager.currentPlayer)) {
               if (self.selected_territories == 0) {
-                self.selected_territories = 1;
-                self.showReallocMenuOptions();
-                document.getElementById('realloc-origin').innerHTML = territories_true_names[this.classList[0]];
-                realloc_menu();
+                if (territories[this.classList[0]].troops > 1) {
+                  self.selected_territories = 1;
+                  self.showSupportMenu();
+                  document.getElementById('support-origin').innerHTML = territories_true_names[this.classList[0]];
+                  realloc_menu();
+                }
               } else {
-                if (territories[true_name_to_code_name(document.getElementById('realloc-origin').innerHTML)].adjacents.indexOf(territories[this.classList[0]]) != -1) {
-                  document.getElementById('realloc-destiny').innerHTML = territories_true_names[this.classList[0]];
+                if (territories[true_name_to_code_name(document.getElementById('support-origin').innerHTML)].adjacents.indexOf(territories[this.classList[0]]) != -1) {
+                  document.getElementById('support-destiny').innerHTML = territories_true_names[this.classList[0]];
                   realloc_confirm();
                 }
               }
@@ -65,7 +82,32 @@ function TurnsManager(players_names) {
     menu.style.display = 'inline-block';
     document.getElementById('attack-phase').style.display = 'none';
     document.getElementById('realloc-phase').style.display = 'none';
+//    document.getElementById('support-menu').style.display = 'none';
+    document.getElementById('support-troops').style.display = 'none';
+    document.getElementById('support-cancel').style.display = 'none';
+    document.getElementById('support-confirm').style.display = 'none';
+    document.getElementById('support-plus').style.display = 'none';
+    document.getElementById('support-minus').style.display = 'none';
+    document.getElementById('support-origin').style.display = 'none';
+    document.getElementById('support-destiny').style.display = 'none';
   }
+
+  this.showAttackMenuIntro = function () {
+    menu = document.getElementById('attack-phase');
+    menu.innerHTML = 'Escolha seu Território ';
+    menu.style.display = 'inline-block';
+    document.getElementById('alloc-phase').style.display = 'none';
+    document.getElementById('realloc-phase').style.display = 'none';
+//    document.getElementById('support-menu').style.display = 'none';
+    document.getElementById('support-troops').style.display = 'none';
+    document.getElementById('support-cancel').style.display = 'none';
+    document.getElementById('support-confirm').style.display = 'none';
+    document.getElementById('support-plus').style.display = 'none';
+    document.getElementById('support-minus').style.display = 'none';
+    document.getElementById('support-origin').style.display = 'none';
+    document.getElementById('support-destiny').style.display = 'none';
+  }
+
 
   this.showReallocMenuIntro = function () {
     menu = document.getElementById('realloc-phase');
@@ -73,25 +115,27 @@ function TurnsManager(players_names) {
     menu.style.display = 'inline-block';
     document.getElementById('attack-phase').style.display = 'none';
     document.getElementById('alloc-phase').style.display = 'none';
-    document.getElementById('realloc-troops').style.display = 'none';
-    document.getElementById('cancel-realloc').style.display = 'none';
-    document.getElementById('confirm-realloc').style.display = 'none';
-    document.getElementById('plus-realloc').style.display = 'none';
-    document.getElementById('minus-realloc').style.display = 'none';
-    document.getElementById('realloc-origin').style.display = 'none';
-    document.getElementById('realloc-destiny').style.display = 'none';
-    
+    //document.getElementById('support-menu').style.display = 'inline-block';
+    document.getElementById('support-troops').style.display = 'none';
+    document.getElementById('support-cancel').style.display = 'none';
+    document.getElementById('support-confirm').style.display = 'none';
+    document.getElementById('support-plus').style.display = 'none';
+    document.getElementById('support-minus').style.display = 'none';
+    document.getElementById('support-origin').style.display = 'none';
+    document.getElementById('support-destiny').style.display = 'none';
   }
 
-  this.showReallocMenuOptions = function () {
+  this.showSupportMenu = function () {
     document.getElementById('realloc-phase').innerHTML = 'Escolha destino ';
-    document.getElementById('realloc-origin').style.display = 'inline-block';
-    document.getElementById('realloc-destiny').style.display = 'inline-block';
-    document.getElementById('realloc-troops').style.display = 'inline-block';
-    document.getElementById('cancel-realloc').style.display = 'inline-block';
-    document.getElementById('confirm-realloc').style.display = 'inline-block';
-    document.getElementById('plus-realloc').style.display = 'inline-block';
-    document.getElementById('minus-realloc').style.display = 'inline-block';
+//    document.getElementById('support-menu').style.display = 'inline-block';
+    
+    document.getElementById('support-origin').style.display = 'inline-block';
+    document.getElementById('support-destiny').style.display = 'inline-block';
+    document.getElementById('support-troops').style.display = 'inline-block';
+    document.getElementById('support-cancel').style.display = 'inline-block';
+    document.getElementById('support-confirm').style.display = 'inline-block';
+    document.getElementById('support-plus').style.display = 'inline-block';
+    document.getElementById('support-minus').style.display = 'inline-block';
 
   }
 }
