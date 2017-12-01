@@ -48,7 +48,7 @@ next_turn = document.getElementsByClassName('next-phase')[0];
 next_turn.addEventListener('click', function() {
   switch (phase) {
     case 'alloc':
-      phase = 'attack';
+      if(players[names[turnsManager.currentPlayer]].troops == 0) phase = 'attack';
       console.log('Attack')
       break;
     case 'attack':
@@ -61,6 +61,7 @@ next_turn.addEventListener('click', function() {
       phase = 'alloc';
       turnsManager.showAllocMenu();
       turnsManager.nextTurn();
+      players[names[turnsManager.currentPlayer]].calculateTroops();
       break;
     default:
       break;

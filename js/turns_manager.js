@@ -30,13 +30,12 @@ function TurnsManager(players_names) {
               if (self.selected_territories == 0) {
                 self.selected_territories = 1;
                 self.showReallocMenuOptions();
-                selected_territory = this.classList[0];
-                realloc_menu(selected_territory);
+                document.getElementById('realloc-origin').innerHTML = territories_true_names[this.classList[0]];
+                realloc_menu();
               } else {
-                if (self.selected_territories == 1) {
-                  if (territories[selected_territory].adjacents.indexOf(territories[this.classList[0]]) != -1) {
-                    realloc_confirm(selected_territory, this.classList[0]);
-                  }
+                if (territories[true_name_to_code_name(document.getElementById('realloc-origin').innerHTML)].adjacents.indexOf(territories[this.classList[0]]) != -1) {
+                  document.getElementById('realloc-destiny').innerHTML = territories_true_names[this.classList[0]];
+                  realloc_confirm();
                 }
               }
             }
@@ -79,11 +78,15 @@ function TurnsManager(players_names) {
     document.getElementById('confirm-realloc').style.display = 'none';
     document.getElementById('plus-realloc').style.display = 'none';
     document.getElementById('minus-realloc').style.display = 'none';
-
+    document.getElementById('realloc-origin').style.display = 'none';
+    document.getElementById('realloc-destiny').style.display = 'none';
+    
   }
 
   this.showReallocMenuOptions = function () {
-    document.getElementById('realloc-phase').innerHTML = 'Escolha quantas tropas ';
+    document.getElementById('realloc-phase').innerHTML = 'Escolha destino ';
+    document.getElementById('realloc-origin').style.display = 'inline-block';
+    document.getElementById('realloc-destiny').style.display = 'inline-block';
     document.getElementById('realloc-troops').style.display = 'inline-block';
     document.getElementById('cancel-realloc').style.display = 'inline-block';
     document.getElementById('confirm-realloc').style.display = 'inline-block';

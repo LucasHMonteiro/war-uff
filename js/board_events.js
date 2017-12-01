@@ -88,8 +88,16 @@ tippy('.biomed', {
     theme: 'war'
 });
 
+function true_name_to_code_name(territory) {
+    territories_names = Object.keys(territories_true_names)
+    for (var index = 0; index < territories_names.length; index++) {
+        if (territories_true_names[territories_names[index]] == territory) return territories_names[index];
+
+    }
+}
+
 function alloc(territory) {
-    player = players[names[turnsManager.currentPlayer]]
+    player = players[names[turnsManager.currentPlayer]];
     if (player.troops > 0 && player.territories.indexOf(territory) != -1) {
         territories[territory].troops += 1;
         player.troops -= 1;
@@ -97,15 +105,19 @@ function alloc(territory) {
     }
 }
 
-function realloc_menu(origin) {
-    document.getElementById('cancel-realloc').addEventListener('click', function () {;
+function realloc_menu() {
+    document.getElementById('cancel-realloc').addEventListener('click', function () {
+        ;
         turnsManager.showReallocMenuIntro();
         document.getElementById('realloc-troops').innerHTML = 0;
+        document.getElementById('realloc-origin').innerHTML = "Origem";
+        document.getElementById('realloc-destiny').innerHTML = "Destino";
         turnsManager.selected_territories = 0;
     });
     var realloc_troops = 0;
+
     function inc_realloc_troops() {
-        if (realloc_troops < territories[origin].troops - 1) realloc_troops++;
+        if (realloc_troops < territories[true_name_to_code_name(document.getElementById('realloc-origin').innerHTML)].troops - 1) realloc_troops++;
         document.getElementById('realloc-troops').innerHTML = realloc_troops;
     }
     function dec_realloc_troops() {
@@ -121,15 +133,21 @@ function realloc_menu(origin) {
     });
 }
 
-function realloc_confirm(origin, destiny) {
+function realloc_confirm() {
     document.getElementById('confirm-realloc').addEventListener('click', function () {
         troops_moving = parseInt(document.getElementById('realloc-troops').innerHTML);
-        territories[origin].troops -= troops_moving;
-        territories[destiny].troops += troops_moving;
-        updateTerritory(origin, tooltips[origin]);
-        updateTerritory(destiny, tooltips[destiny]);
-        turnsManager.showReallocMenuIntro();
-        document.getElementById('realloc-troops').innerHTML = 0;
-        turnsManager.selected_territories = 0;
+        if (troops_moving > 0) {
+            origin = true_name_to_code_name(document.getElementById('realloc-origin').innerHTML);
+            destiny = true_name_to_code_name(document.getElementById('realloc-destiny').innerHTML);
+            territories[origin].troops -= troops_moving;
+            territories[destiny].troops += troops_moving;
+            updateTerritory(origin, tooltips[origin]);
+            updateTerritory(destiny, tooltips[destiny]);
+            turnsManager.showReallocMenuIntro();
+            document.getElementById('realloc-troops').innerHTML = 0;
+            document.getElementById('realloc-origin').innerHTML = "Origem";
+            document.getElementById('realloc-destiny').innerHTML = "Destino";
+            turnsManager.selected_territories = 0;
+        }
     });
 }
