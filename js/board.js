@@ -1,3 +1,16 @@
+players_counter = 0;
+set_goals_interval = setInterval(function () {
+  fetch(server_base_url + 'rooms/' + room_code.toUpperCase() + '/players/' + players[names[players_counter]].id, {
+    method: 'PATCH',
+    body: JSON.stringify({ "attributes": players[names[players_counter]].goal_cards }),
+    headers: {
+      'Content-Type': "application/json"
+    }
+  }).then(function (myBlob) {
+    console.log(players_counter);
+    if (players_counter++ >= names.length - 1) clearInterval(set_goals_interval);
+  });
+}, 250);
 turnsManager = new TurnsManager(names);
 buildNamesList();
 boardInit();
@@ -70,6 +83,4 @@ next_turn.addEventListener('click', function() {
       break;
   }
 });
-
-
 

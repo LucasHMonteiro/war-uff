@@ -1,3 +1,5 @@
+server_base_url = 'https://war-room-server.herokuapp.com/';
+// server_base_url = 'http://127.0.0.1:3000/';
 room_code = "";
 names = [];
 players = new Array();
@@ -32,6 +34,31 @@ territories_true_names = {
     'iacs2': 'IACS 2'
 }
 phase = 'alloc';
+
+goal_cards = [
+    'piroca',
+    'cu',
+    'buceta',
+    'vagina',
+    'xoxota',
+    'cebola',
+    'cramulhão',
+    'rinoceronte',
+    'pênis',
+    'artrose',
+    'sirigaita',
+    'sacerdotisa',
+    'vai tomar no cu',
+    'dfasdfa',
+    'dragon ball é uma merda',
+    'es2 de cu é rola',
+    '22cm de piroca',
+    'chupa xoxota é uma coisa linda'
+]
+
+function popRandomElement(array) {
+    return array.splice(Math.floor(Math.random() * array.length), 1);
+}
 
 $(function(){
     $("#content").load("main_menu.html");

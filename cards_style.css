@@ -1,0 +1,60 @@
+#card {
+    display: inline-block;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    box-shadow: 10px 10px 5px black;
+    background: url('old-paper.jpg');
+    background-size: cover;
+    border-radius: 10px;
+    font: inherit;
+    color: #990303;
+    width: 250px;
+    height: 350px;
+}
+
+#card-text {
+    margin-top: 80px;
+}
+
+#prev, #next {
+    width: 60px;
+    height: 60px;
+    margin: 0 40px;
+    margin-bottom: 20px;
+    border: none;
+    font: inherit;
+    color: inherit;
+    font-size: 20px;
+    background-color: #1a1a1a;
+    box-shadow: 10px 10px 5px black;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+#dots {
+    display: flex;
+    font-size: 60px;
+    align-items: center;
+    justify-content: center;
+    margin:0;
+    margin-bottom: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+#prev:hover, #next:hover {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    font-size: 30px;
+    width: 75px;
+    height: 75px;
+    background-color: #414346;
+}
+
+*:focus {
+    outline: none;
+}
