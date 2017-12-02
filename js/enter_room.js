@@ -1,12 +1,12 @@
 button = document.getElementById('submit')
+identity = Math.random().toString(36).substring(2, 20);
 button.onclick = function(){
     room_code = document.getElementById('code').value;
     name = document.getElementById('name').value;
-    console.log(room_code, name);
     if(room_code && name){
-        fetch('https://war-room-server.herokuapp.com/rooms/'+room_code.toUpperCase()+'/players', {
+        fetch(server_base_url + 'rooms/' + room_code.toUpperCase() + '/players', {
             method: 'POST',
-            body: '{"name":"'+name+'"}',
+            body: JSON.stringify({ "name": name, "identity": identity}),
             headers: {
                 'Content-Type': "application/json"
             }
@@ -15,3 +15,11 @@ button.onclick = function(){
         });
     }
 }
+
+// button = document.getElementById('submit')
+// identity = 'nbi0kzjen69';
+// button.onclick = function () {
+//     room_code = 'LNX2Y';
+//     name = 'qwer';
+//     $('#content').load("wait_game.html");
+// }
