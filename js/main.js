@@ -1,3 +1,5 @@
+server_base_url = 'https://war-room-server.herokuapp.com/';
+// server_base_url = 'http://127.0.0.1:3000/';
 room_code = "";
 names = [];
 players = new Array();
@@ -32,6 +34,34 @@ territories_true_names = {
     'iacs2': 'IACS 2'
 }
 phase = 'alloc';
+
+goal_cards = [
+    'obj1',
+    'obj2',
+    'obj3',
+    'obj4',
+    'obj5',
+    'obj6',
+    'obj7',
+    'obj8',
+    'obj9',
+    'obj10',
+    'obj11',
+    'obj12',
+    'obj13',
+    'obj14',
+    'obj15',
+    'obj16',
+    'obj17',
+    'obj18',
+    'obj19'
+]
+
+my_cards = []
+
+function popRandomElement(array) {
+    return array.splice(Math.floor(Math.random() * array.length), 1);
+}
 
 $(function(){
     $("#content").load("main_menu.html");
