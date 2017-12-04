@@ -159,8 +159,8 @@ function realloc_menu() {
 function roll_dices(attack, defense) {
     attack_rolls = [];
     defense_rolls = [];
-    show_dice_atk = document.getElementById('dice_atk');
-    show_dice_def = document.getElementById('dice_def');
+    show_dice_atk = document.getElementById('dice-atk');
+    show_dice_def = document.getElementById('dice-def');
     show_dice_atk.innerHTML = "Dados de Ataque";
     show_dice_def.innerHTML = "Dados de Defesa";
     for (var i = 0; i < defense; i++) {
@@ -174,9 +174,9 @@ function roll_dices(attack, defense) {
     attack_rolls.reverse(attack_rolls.sort());
     defense_rolls.reverse(defense_rolls.sort());
     show_dice_atk.innerHTML = attack_rolls;
-    show_dice_atk.style.display = 'inline-block';
+  //  show_dice_atk.style.display = 'inline-block';
     show_dice_def.innerHTML = defense_rolls;
-    show_dice_def.style.display = 'inline-block';
+  //  show_dice_def.style.display = 'inline-block';
     num_checks = Math.min(defense, attack);
     console.log(show_dice_atk.innerHTML + " D  " + show_dice_def.innerHTML );
     win_rolls = 0;
@@ -187,7 +187,7 @@ function roll_dices(attack, defense) {
 }
 
 function attack_confirm() {
-    document.getElementById('support-confirm').addEventListener('click', function () {
+    document.getElementById('support-confirm').onclick= function () {
         troops_attacking = parseInt(document.getElementById('support-troops').innerHTML);
         if (troops_attacking > 0) {
             origin = true_name_to_code_name(document.getElementById('support-origin').innerHTML);
@@ -203,15 +203,15 @@ function attack_confirm() {
                 defender_name = territories[destiny].owner;
                 players[defender_name].territories.splice(players[defender_name].territories.indexOf(destiny),1);
                 territories[destiny].owner = names[turnsManager.currentPlayer];
-                territories[destiny].troops = win_rolls;
-                territories[origin].troops -= troops_attacking;
+                territories[destiny].troops = (troops_attacking - troops_defending) + win_rolls;
+                territories[origin].troops -= troops_attacking ;
                 players[names[turnsManager.currentPlayer]].territories.push(destiny);
                 target_territory = document.getElementsByClassName(destiny)[0];
                 target_territory.classList.remove('taken-' + names.indexOf(defender_name));
                 target_territory.classList.add('taken-' + turnsManager.currentPlayer);
             } else {
                 territories[destiny].troops -= win_rolls;
-                territories[origin].troops -= troops_attacking - win_rolls;
+                territories[origin].troops -= Math.min(troops_attacking,troops_defending - win_rolls);
             }
             updateTerritory(origin, tooltips[origin]);
             updateTerritory(destiny, tooltips[destiny]);
@@ -220,12 +220,13 @@ function attack_confirm() {
             document.getElementById('support-origin').innerHTML = "Origem";
             document.getElementById('support-destiny').innerHTML = "Destino";
             turnsManager.selected_territories = 0;
+            document.getElementById('support-confirm').onclick = null;
         }
-    });
+    };
 }
 
 function realloc_confirm() {
-    document.getElementById('support-confirm').addEventListener('click', function () {
+    document.getElementById('support-confirm').onclick = function () {
         troops_moving = parseInt(document.getElementById('support-troops').innerHTML);
         if (troops_moving > 0) {
             origin = true_name_to_code_name(document.getElementById('support-origin').innerHTML);
@@ -239,6 +240,7 @@ function realloc_confirm() {
             document.getElementById('support-origin').innerHTML = "Origem";
             document.getElementById('support-destiny').innerHTML = "Destino";
             turnsManager.selected_territories = 0;
+            document.getElementById('support-confirm').onclick = null;
         }
-    });
+    };
 }
