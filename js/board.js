@@ -33,7 +33,7 @@ function buildNamesList() {
   listBuilder = '';
   colors = ['crimson', 'dodgerblue', 'limegreen', 'deeppink', 'orangered', 'yellow', 'purple'];
   for (var i = 0; i < names.length; i++) {
-    listBuilder += '<li id="player' + i + '" color="'+colors[i]+'">' + names[i] + '</li>'
+    listBuilder += '<li id="player' + i + '" color="' + colors[i] + '">' + names[i] + '</li>'
   }
   $("#player_names").html(listBuilder);
 }
@@ -45,7 +45,7 @@ function boardInit() {
   mod = territories_names.length % num_players;
   for (var i = 0; i < names.length + mod; i++) {
     for (var j = 0; j < territories_per_player; j++) {
-      target_territory_index = Math.floor(Math.random() * (territories_names.length-1));
+      target_territory_index = Math.floor(Math.random() * (territories_names.length - 1));
       name = territories_names[target_territory_index];
       target_territory = document.getElementsByClassName(name)[0];
       target_territory.classList.add('taken-' + i % names.length);
@@ -59,32 +59,55 @@ function boardInit() {
   }
 }
 
+
 turnsManager.firstTurn();
 turnsManager.showAllocMenu();
 next_turn = document.getElementsByClassName('next-phase')[0];
-next_turn.addEventListener('click', function() {
-  switch (phase) {
-    case 'alloc':
-      if(players[names[turnsManager.currentPlayer]].troops == 0){
-        phase = 'attack';
-        turnsManager.showAttackMenuIntro();
-        console.log('Attack')
-      } 
-      break;
-    case 'attack':
-      console.log('Realloc')
-      phase = 'realloc';
-      turnsManager.showReallocMenuIntro();
-      break;
-    case 'realloc':
-      console.log('Alloc')
-      phase = 'alloc';
-      turnsManager.nextTurn();
-      players[names[turnsManager.currentPlayer]].calculateTroops();
-      turnsManager.showAllocMenu();
-      break;
-    default:
-      break;
-  }
-});
+players[names[turnsManager.currentPlayer]].calculateTroops();
+first_loop = 0;
+next_turn.onclick = function () {
+  if (players[names[turnsManager.currentPlayer]].troops == 0) {
+    turnsManager.nextTurn();
+    players[names[turnsManager.currentPlayer]].calculateTroops();
+    turnsManager.showAllocMenu();
+    document.getElementsByClassName('next-phase')[0].innerHTML = 'ALOCAR';
+    first_loop++;
+    if (first_loop >= names.length) {
+      next_turn.onclick = null;
+      next_turn.onclick = function () {
+        switch (phase) {
+          case 'alloc':
+            if (players[names[turnsManager.currentPlayer]].troops == 0) {
+              phase = 'attack';
+              turnsManager.showAttackMenuIntro();
+              document.getElementsByClassName('next-phase')[0].innerHTML = 'ATACAR';
+              console.log('Attack')
+            }
+            break;
+          case 'attack':
+            console.log('Realloc')
+            document.getElementById('support-troops').innerHTML = 0;
+            document.getElementById('support-origin').innerHTML = "Origem";
+            document.getElementById('support-destiny').innerHTML = "Destino";
+            turnsManager.selected_territories = 0;
+            document.getElementById('support-confirm').onclick = null;
+            phase = 'realloc';
+            turnsManager.showReallocMenuIntro();
+            document.getElementsByClassName('next-phase')[0].innerHTML = 'REALOCAR';
+            break;
+          case 'realloc':
+            console.log('Alloc')
+            phase = 'alloc';
+            turnsManager.nextTurn();
+            players[names[turnsManager.currentPlayer]].calculateTroops();
+            turnsManager.showAllocMenu();
+            document.getElementsByClassName('next-phase')[0].innerHTML = 'ALOCAR';
+            break;
+          default:
+            break;
+        }
+      };
+    }
+  };
+}
 

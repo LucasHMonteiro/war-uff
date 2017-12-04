@@ -6,6 +6,6 @@ function Player(name, index, goals, id) {
     this.goal_cards = goals;
     this.id = id;
     this.calculateTroops = function() {
-        this.troops = Math.floor(this.territories.length/2);
-    }
+        this.troops = Math.max(2,Math.floor(this.territories.length/2));
+     }
 }
