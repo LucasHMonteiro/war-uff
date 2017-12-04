@@ -17,24 +17,24 @@ minus.onclick = decrement;
 plus.onclick = increment;
 
 create = document.getElementById('create');
-// create.onclick = function(){
-//     room_code = Math.random().toString(36).substring(2, 7);
-//     room_code = room_code.toUpperCase();
-//     fetch('https://war-room-server.herokuapp.com/rooms', {
-//         method: 'POST',
-//         body: '{"code": "'+room_code+'", "size": '+i+'}',
-//         headers: {
-//             'Content-Type': "application/json"
-//         }
-//     });
-//     $(function(){
-//         $("#content").load("lobby.html");
-//     });
-// }
-create.onclick = function () {
+create.onclick = function(){
     room_code = Math.random().toString(36).substring(2, 7);
-    room_code = 'KWFS0';
-    $(function () {
+    room_code = room_code.toUpperCase();
+    fetch(server_base_url + 'rooms', {
+        method: 'POST',
+        body: '{"code": "'+room_code+'", "size": '+i+'}',
+        headers: {
+            'Content-Type': "application/json"
+        }
+    });
+    $(function(){
         $("#content").load("lobby.html");
     });
 }
+// create.onclick = function () {
+//     room_code = Math.random().toString(36).substring(2, 7);
+//     room_code = 'LNX2Y';
+//     $(function () {
+//         $("#content").load("lobby.html");
+//     });
+// }

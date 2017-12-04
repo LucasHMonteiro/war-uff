@@ -7,7 +7,7 @@ var waitInterval = setInterval(function(){
         document.getElementById('wait_title').innerHTML = 'Waiting Game to Start';
         dotCounter = 0;
     }
-    fetch('https://war-room-server.herokuapp.com/rooms/'+room_code, {
+    fetch(server_base_url + 'rooms/' + room_code, {
         method: 'get',
         headers: {
             'Content-Type': "application/json"
@@ -15,7 +15,8 @@ var waitInterval = setInterval(function(){
     }).then(function(response) {
         response.text().then(function(data){
             room_data = JSON.parse(data);
-            if(room_data.players.length == room_data.size){
+            players_array = Object.entries(room_data.players).map(p => p[1].name);
+            if(players_array.length == room_data.size){
                 clearInterval(waitInterval);
                 $(function(){
                     $('#content').load("cards.html");
