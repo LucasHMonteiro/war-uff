@@ -20,7 +20,7 @@ create = document.getElementById('create');
 // create.onclick = function(){
 //     room_code = Math.random().toString(36).substring(2, 7);
 //     room_code = room_code.toUpperCase();
-//     fetch('https://war-room-server.herokuapp.com/rooms', {
+//     fetch(server_base_url + 'rooms', {
 //         method: 'POST',
 //         body: '{"code": "'+room_code+'", "size": '+i+'}',
 //         headers: {
@@ -33,7 +33,7 @@ create = document.getElementById('create');
 // }
 create.onclick = function () {
     room_code = Math.random().toString(36).substring(2, 7);
-    room_code = '5beq3';
+    room_code = 'Q24X7';
     $(function () {
         $("#content").load("lobby.html");
     });
