@@ -7,12 +7,14 @@ set_goals_interval = setInterval(function () {
       'Content-Type': "application/json"
     }
   }).then(function (myBlob) {
-    if (players_counter < names.length){
-      if(players_counter+1 == names.length){
-        console.log('');
+    if (players_counter < names.length) {
+      if (players_counter + 1 == names.length) {
+        console.log(players_counter);
         clearInterval(set_goals_interval);
+        //        players_counter--;
+      } else {
+        players_counter++;
       }
-      players_counter++;
     }
   });
 }, 250);
@@ -46,7 +48,7 @@ function boardInit() {
   mod = territories_names.length % num_players;
   for (var i = 0; i < names.length + mod; i++) {
     for (var j = 0; j < territories_per_player; j++) {
-      if(territories_names.length > 0){
+      if (territories_names.length > 0) {
         target_territory_index = Math.floor(Math.random() * (territories_names.length - 1));
         name = territories_names[target_territory_index];
         target_territory = document.getElementsByClassName(name)[0];
@@ -56,7 +58,7 @@ function boardInit() {
         territories[name].troops = 1;
         territories[name].owner = names[i % names.length];
         updateTerritory(name, tooltips[name]);
-      }else{
+      } else {
         break;
       }
     }
@@ -74,9 +76,9 @@ next_turn.onclick = function () {
     turnsManager.nextTurn();
     players[names[turnsManager.currentPlayer]].calculateTroops();
     turnsManager.showAllocMenu();
-    document.getElementsByClassName('next-phase')[0].innerHTML = 'ALOCAR';
     first_loop++;
     if (first_loop >= names.length) {
+      document.getElementsByClassName('next-phase')[0].innerHTML = 'ATACAR';
       next_turn.onclick = null;
       next_turn.onclick = function () {
         switch (phase) {
@@ -84,7 +86,7 @@ next_turn.onclick = function () {
             if (players[names[turnsManager.currentPlayer]].troops == 0) {
               phase = 'attack';
               turnsManager.showAttackMenuIntro();
-              document.getElementsByClassName('next-phase')[0].innerHTML = 'ATACAR';
+              document.getElementsByClassName('next-phase')[0].innerHTML = 'REALOCAR';
               console.log('Attack')
             }
             break;
@@ -97,7 +99,8 @@ next_turn.onclick = function () {
             document.getElementById('support-confirm').onclick = null;
             phase = 'realloc';
             turnsManager.showReallocMenuIntro();
-            document.getElementsByClassName('next-phase')[0].innerHTML = 'REALOCAR';
+            document.getElementsByClassName('next-phase')[0].innerHTML = 'PRÓXIMO';
+            objective_check(players[names[turnsManager.currentPlayer]].goal_cards[0]);
             break;
           case 'realloc':
             console.log('Alloc')
@@ -105,7 +108,7 @@ next_turn.onclick = function () {
             turnsManager.nextTurn();
             players[names[turnsManager.currentPlayer]].calculateTroops();
             turnsManager.showAllocMenu();
-            document.getElementsByClassName('next-phase')[0].innerHTML = 'ALOCAR';
+            document.getElementsByClassName('next-phase')[0].innerHTML = 'ATACAR';
             break;
           default:
             break;

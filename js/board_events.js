@@ -345,11 +345,11 @@ function roll_dices(attack, defense) {
     attack_rolls.reverse(attack_rolls.sort());
     defense_rolls.reverse(defense_rolls.sort());
     show_dice_atk.innerHTML = attack_rolls;
-  //  show_dice_atk.style.display = 'inline-block';
+    //  show_dice_atk.style.display = 'inline-block';
     show_dice_def.innerHTML = defense_rolls;
-  //  show_dice_def.style.display = 'inline-block';
+    //  show_dice_def.style.display = 'inline-block';
     num_checks = Math.min(defense, attack);
-    console.log(show_dice_atk.innerHTML + " D  " + show_dice_def.innerHTML );
+    console.log(show_dice_atk.innerHTML + " D  " + show_dice_def.innerHTML);
     win_rolls = 0;
     for (var k = 0; k < num_checks; k++) {
         if (attack_rolls[k] > defense_rolls[k]) win_rolls++;
@@ -358,7 +358,7 @@ function roll_dices(attack, defense) {
 }
 
 function attack_confirm() {
-    document.getElementById('support-confirm').onclick= function () {
+    document.getElementById('support-confirm').onclick = function () {
         troops_attacking = parseInt(document.getElementById('support-troops').innerHTML);
         if (troops_attacking > 0) {
             origin = true_name_to_code_name(document.getElementById('support-origin').innerHTML);
@@ -372,17 +372,17 @@ function attack_confirm() {
             console.log(win_rolls);
             if (win_rolls >= troops_defending) {
                 defender_name = territories[destiny].owner;
-                players[defender_name].territories.splice(players[defender_name].territories.indexOf(destiny),1);
+                players[defender_name].territories.splice(players[defender_name].territories.indexOf(destiny), 1);
                 territories[destiny].owner = names[turnsManager.currentPlayer];
                 territories[destiny].troops = (troops_attacking - troops_defending) + win_rolls;
-                territories[origin].troops -= troops_attacking ;
+                territories[origin].troops -= troops_attacking;
                 players[names[turnsManager.currentPlayer]].territories.push(destiny);
                 target_territory = document.getElementsByClassName(destiny)[0];
                 target_territory.classList.remove('taken-' + names.indexOf(defender_name));
                 target_territory.classList.add('taken-' + turnsManager.currentPlayer);
             } else {
                 territories[destiny].troops -= win_rolls;
-                territories[origin].troops -= Math.min(troops_attacking,troops_defending - win_rolls);
+                territories[origin].troops -= Math.min(troops_attacking, troops_defending - win_rolls);
             }
             updateTerritory(origin, tooltips[origin]);
             updateTerritory(destiny, tooltips[destiny]);
@@ -414,4 +414,92 @@ function realloc_confirm() {
             document.getElementById('support-confirm').onclick = null;
         }
     };
+}
+
+function contains_continent(territories, continent_territories) {
+    for (var i = 0; i < continent_territories.length; i++) {
+        if (!territories.contains(continent_territories)) return false;
+    }
+    return true;
+}
+
+function count_territories_with_2t(player_territories) {
+    territories_with_2t = 0;
+    for (var i = 0; i < player_territories.length; i++) {
+        if (territories[player_territories[i]].troops >= 2) territories_with_2t++;
+    }
+    if (territories_with_2t >= 16) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function objective_check(objective) {
+    current_player = names[turnsManager.currentPlayer];
+    switch (objective) {
+        case ('Conquistar Praia Vermelha em sua totalidade.'):
+            if (contains_continent(players[current_player].territories, continents['praia-vermelha'].territories)) {
+                console.log(current_player + " Venceu!!!");
+            }
+            break;
+        case ('Conquistar Gragoatá em sua totalidade.'):
+            if (contains_continent(players[current_player].territories, continents['gragoata'].territories)) {
+                console.log(current_player + " Venceu!!!");
+            }
+            break;
+        case ('Conquistar Valonguinho e a União dos Campi Independentes em suas totalidades.'):
+            if (contains_continent(players[current_player].territories, continents['valonguinho'].territories)
+                && (contains_continent(players[current_player].territories, continents['UCI'].territories))) {
+                console.log(current_player + " Venceu!!!");
+            }
+            break;
+        case ('Conquistar 18 territórios à sua escolha.'):
+            if (players[current_player].territories.length >= 18) {
+                console.log(current_player + " Venceu!!!");
+            }
+            break;
+        case ('Conquistar 16 territórios com ao menos 2 exércitos à sua escolha.'):
+            if (count_territories_with_2t(players[current_player].territories)) {
+                console.log(current_player + " Venceu!!!");
+            }
+            break;
+        case ('Destruir totalmente o exército vermelho.'):
+            if (players[names[0]].territories[0] == null) {
+                console.log(current_player + " Venceu!!!");
+            }
+            break;
+        case ('Destruir totalmente o exército azul.'):
+                if (players[names[1]].territories[0] == null) {
+                    console.log(current_player + " Venceu!!!");
+                }
+            break;
+        case ('Destruir totalmente o exército verde.'):
+                if (players[names[2]].territories[0] == null) {
+                    console.log(current_player + " Venceu!!!");
+                }
+            break;
+        case ('Destruir totalmente o exército rosa.'):
+            if (names[3] == null) {
+                if (players[current_player].territories.length >= 18) {
+                    console.log(current_player + " Venceu!!!");
+                }
+            } else {
+                if (players[names[3]].territories[0] == null) {
+                    console.log(current_player + " Venceu!!!");
+                }
+            }
+            break;
+        case ('Destruir totalmente o exército laranja.'):
+            if (names[4] == null) {
+                if (players[current_player].territories.length >= 18) {
+                    console.log(current_player + " Venceu!!!");
+                }
+            } else {
+                if (players[names[4]].territories[0] == null) {
+                    console.log(current_player + " Venceu!!!");
+                }
+            }
+            break;
+    }
 }

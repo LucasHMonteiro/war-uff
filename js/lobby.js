@@ -27,7 +27,7 @@ var lobbyInterval = setInterval(function(){
                     ]
                     console.log(cards);
                     players[names[index]] = new Player(names[index], index, cards.join(), players_ids[index]);
-                }
+                    }
                 $(function(){
                     $("#content").load("map.html");
                 });

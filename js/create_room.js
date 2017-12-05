@@ -17,24 +17,23 @@ minus.onclick = decrement;
 plus.onclick = increment;
 
 create = document.getElementById('create');
-create.onclick = function(){
-    room_code = Math.random().toString(36).substring(2, 7);
-    room_code = room_code.toUpperCase();
-    fetch(server_base_url + 'rooms', {
-        method: 'POST',
-        body: '{"code": "'+room_code+'", "size": '+i+'}',
-        headers: {
-            'Content-Type': "application/json"
-        }
-    });
-    $(function(){
-        $("#content").load("lobby.html");
-    });
-}
-// create.onclick = function () {
+// create.onclick = function(){
 //     room_code = Math.random().toString(36).substring(2, 7);
-//     room_code = 'Q24X7';
-//     $(function () {
+//     room_code = room_code.toUpperCase();
+//     fetch(server_base_url + 'rooms', {
+//         method: 'POST',
+//         body: '{"code": "'+room_code+'", "size": '+i+'}',
+//         headers: {
+//             'Content-Type': "application/json"
+//         }
+//     });
+//     $(function(){
 //         $("#content").load("lobby.html");
 //     });
 // }
+create.onclick = function () {
+    room_code = 'Q24X7';
+    $(function () {
+        $("#content").load("lobby.html");
+    });
+}
