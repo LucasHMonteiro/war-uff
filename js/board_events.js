@@ -277,13 +277,14 @@ function alloc(territory) {
 }
 
 function attack_menu() {
-    document.getElementById('support-cancel').addEventListener('click', function () {
+    document.getElementById('support-cancel').onclick = function () {
         turnsManager.showReallocMenuIntro();
         document.getElementById('support-troops').innerHTML = 0;
         document.getElementById('support-origin').innerHTML = "Origem";
         document.getElementById('support-destiny').innerHTML = "Destino";
         turnsManager.selected_territories = 0;
-    });
+        document.getElementById('support-cancel').onclick = null;
+    };
     var attack_troops = 0;
     function inc_realloc_troops() {
         if ((attack_troops < territories[true_name_to_code_name(document.getElementById('support-origin').innerHTML)].troops - 1) && attack_troops < 3) attack_troops++;
@@ -302,13 +303,14 @@ function attack_menu() {
 }
 
 function realloc_menu() {
-    document.getElementById('support-cancel').addEventListener('click', function () {
+    document.getElementById('support-cancel').onclick = function () {
         turnsManager.showReallocMenuIntro();
         document.getElementById('support-troops').innerHTML = 0;
         document.getElementById('support-origin').innerHTML = "Origem";
         document.getElementById('support-destiny').innerHTML = "Destino";
         turnsManager.selected_territories = 0;
-    });
+        document.getElementById('support-cancel').onclick = null;
+    };
     var realloc_troops = 0;
     function inc_realloc_troops() {
         if (realloc_troops < territories[true_name_to_code_name(document.getElementById('support-origin').innerHTML)].troops - 1) realloc_troops++;
