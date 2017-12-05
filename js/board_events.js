@@ -5,52 +5,223 @@ function updateTerritory(objClass, territory) {
 
 tooltips = new Array();
 
-tooltips['grag'] = document.querySelector('#grag-tooltip'); updateTerritory('grag', tooltips['grag']);
-tooltips['pv'] = document.querySelector('#pv-tooltip'); updateTerritory('pv', tooltips['pv']);
 tooltips['eco'] = document.querySelector('#eco-tooltip'); updateTerritory('eco', tooltips['eco']);
-tooltips['valong'] = document.querySelector('#valong-tooltip'); updateTerritory('valong', tooltips['valong']);
-tooltips['canta'] = document.querySelector('#canta-tooltip'); updateTerritory('canta', tooltips['canta']);
 tooltips['dir'] = document.querySelector('#dir-tooltip'); updateTerritory('dir', tooltips['dir']);
 tooltips['iacs1'] = document.querySelector('#iacs1-tooltip'); updateTerritory('iacs1', tooltips['iacs1']);
 tooltips['iacs2'] = document.querySelector('#iacs2-tooltip'); updateTerritory('iacs2', tooltips['iacs2']);
 tooltips['biomed'] = document.querySelector('#biomed-tooltip'); updateTerritory('biomed', tooltips['biomed']);
+tooltips['bib'] = document.querySelector('#bib-tooltip'); updateTerritory('bib', tooltips['bib']);
+tooltips['psi'] = document.querySelector('#psi-tooltip'); updateTerritory('psi', tooltips['psi']);
+tooltips['aloj'] = document.querySelector('#aloj-tooltip'); updateTerritory('aloj', tooltips['aloj']);
+tooltips['canta'] = document.querySelector('#canta-tooltip'); updateTerritory('canta', tooltips['canta']);
+tooltips['let'] = document.querySelector('#let-tooltip'); updateTerritory('let', tooltips['let']);
+tooltips['band1'] = document.querySelector('#band1-tooltip'); updateTerritory('band1', tooltips['band1']);
+tooltips['mat'] = document.querySelector('#mat-tooltip'); updateTerritory('mat', tooltips['mat']);
+tooltips['quadras'] = document.querySelector('#quadras-tooltip'); updateTerritory('quadras', tooltips['quadras']);
+tooltips['edfi'] = document.querySelector('#edfi-tooltip'); updateTerritory('edfi', tooltips['edfi']);
+tooltips['dce'] = document.querySelector('#dce-tooltip'); updateTerritory('dce', tooltips['dce']);
+tooltips['adm'] = document.querySelector('#adm-tooltip'); updateTerritory('adm', tooltips['adm']);
+tooltips['bio'] = document.querySelector('#bio-tooltip'); updateTerritory('bio', tooltips['bio']);
+tooltips['odonto'] = document.querySelector('#odonto-tooltip'); updateTerritory('odonto', tooltips['odonto']);
+tooltips['ana'] = document.querySelector('#ana-tooltip'); updateTerritory('ana', tooltips['ana']);
+tooltips['arq'] = document.querySelector('#arq-tooltip'); updateTerritory('arq', tooltips['arq']);
+tooltips['band2'] = document.querySelector('#band2-tooltip'); updateTerritory('band2', tooltips['band2']);
+tooltips['eng'] = document.querySelector('#eng-tooltip'); updateTerritory('eng', tooltips['eng']);
+tooltips['quim'] = document.querySelector('#quim-tooltip'); updateTerritory('quim', tooltips['quim']);
+tooltips['ic'] = document.querySelector('#ic-tooltip'); updateTerritory('ic', tooltips['ic']);
+tooltips['geoc'] = document.querySelector('#geoc-tooltip'); updateTerritory('geoc', tooltips['geoc']);
+tooltips['fis'] = document.querySelector('#fis-tooltip'); updateTerritory('fis', tooltips['fis']);
+tooltips['bh'] = document.querySelector('#bh-tooltip'); updateTerritory('bh', tooltips['bh']);
+tooltips['casav'] = document.querySelector('#casav-tooltip'); updateTerritory('casav', tooltips['casav']);
 
-tippy('.grag', {
-    html: tooltips['grag'],
+tippy('.dce', {
+    html: tooltips['dce'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
+    distance: -10,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.adm', {
+    html: tooltips['adm'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -10,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.bio', {
+    html: tooltips['bio'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -10,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.odonto', {
+    html: tooltips['odonto'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -10,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.ana', {
+    html: tooltips['ana'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -10,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.arq', {
+    html: tooltips['arq'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -10,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.band2', {
+    html: tooltips['band2'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -10,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.eng', {
+    html: tooltips['eng'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -10,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.quim', {
+    html: tooltips['quim'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -10,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.ic', {
+    html: tooltips['ic'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -10,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.geoc', {
+    html: tooltips['geoc'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -10,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.fis', {
+    html: tooltips['fis'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: 0,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.bh', {
+    html: tooltips['bh'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: 0,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.casav', {
+    html: tooltips['casav'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -10,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.bib', {
+    html: tooltips['bib'],
+    arrow: true,
+    animation: 'shift-away',
     distance: -40,
     arrowTransform: 'scale(2)',
     theme: 'war'
 });
-tippy('.pv', {
-    html: tooltips['pv'],
+tippy('.psi', {
+    html: tooltips['psi'],
     arrow: true,
-    animation: 'fade',
-    distance: -50,
+    animation: 'shift-away',
+    distance: -40,
     arrowTransform: 'scale(2)',
     theme: 'war'
 });
-tippy('.eco', {
-    html: tooltips['eco'],
+tippy('.aloj', {
+    html: tooltips['aloj'],
     arrow: true,
-    animation: 'fade',
-    distance: 15,
-    arrowTransform: 'scale(2)',
-    theme: 'war'
-});
-tippy('.valong', {
-    html: tooltips['valong'],
-    arrow: true,
-    animation: 'fade',
-    distance: 15,
+    animation: 'shift-away',
+    distance: -40,
     arrowTransform: 'scale(2)',
     theme: 'war'
 });
 tippy('.canta', {
     html: tooltips['canta'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
+    distance: 15,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.let', {
+    html: tooltips['let'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -20,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.band1', {
+    html: tooltips['band1'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -20,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.mat', {
+    html: tooltips['mat'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -20,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.quadras', {
+    html: tooltips['quadras'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -20,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.edfi', {
+    html: tooltips['edfi'],
+    arrow: true,
+    animation: 'shift-away',
+    distance: -20,
+    arrowTransform: 'scale(2)',
+    theme: 'war'
+});
+tippy('.eco', {
+    html: tooltips['eco'],
+    arrow: true,
+    animation: 'shift-away',
     distance: 15,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -58,7 +229,7 @@ tippy('.canta', {
 tippy('.dir', {
     html: tooltips['dir'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: 15,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -66,7 +237,7 @@ tippy('.dir', {
 tippy('.iacs1', {
     html: tooltips['iacs1'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: 15,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -74,7 +245,7 @@ tippy('.iacs1', {
 tippy('.iacs2', {
     html: tooltips['iacs2'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: 15,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -82,7 +253,7 @@ tippy('.iacs2', {
 tippy('.biomed', {
     html: tooltips['biomed'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: 15,
     arrowTransform: 'scale(2)',
     theme: 'war'

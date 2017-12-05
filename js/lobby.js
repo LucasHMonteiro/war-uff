@@ -16,14 +16,17 @@ var lobbyInterval = setInterval(function(){
             if(players_array.length == room_data.size){
                 clearInterval(lobbyInterval);
                 names = formatNames(players_array);
-                indexes = Array.apply(null, { length: goal_cards.length}).map(Number.call, Number)
+                goal_indexes = Array.apply(null, { length: goal_cards.length}).map(Number.call, Number);
+                territory_indexes = Array.apply(null, { length: territory_cards.length }).map(Number.call, Number);
                 for (var index = 0; index < names.length; index++) {
-                    goals = [
-                        popRandomElement(indexes),
-                        popRandomElement(indexes),
-                        popRandomElement(indexes)
+                    cards = [
+                        popRandomElement(goal_indexes),
+                        popRandomElement(territory_indexes),
+                        popRandomElement(territory_indexes),
+                        popRandomElement(territory_indexes)
                     ]
-                    players[names[index]] = new Player(names[index], index, goals.join(), players_ids[index]);
+                    console.log(cards);
+                    players[names[index]] = new Player(names[index], index, cards.join(), players_ids[index]);
                 }
                 $(function(){
                     $("#content").load("map.html");
