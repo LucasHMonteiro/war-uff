@@ -415,3 +415,31 @@ function realloc_confirm() {
         }
     };
 }
+
+
+function objective_chech(objective){
+    current_player = names[turnsManager.currentPlayer];
+    switch (objective){
+        case ('Conquistar Praia Vermelha em sua totalidade.'):
+             if (players[current_player].territories.contains(continents['praia-vermelha']))
+        break;
+        case ('Conquistar Gragoatá em sua totalidade.'):
+        break;
+        case ('Conquistar Valonguinho e a União dos Campi Independentes em suas totalidades.'):
+        break;
+        case ('Conquistar 18 territórios à sua escolha.'):
+        break;
+        case ('Conquistar 16 territórios com ao menos 2 exércitos à sua escolha.'):
+        break;
+        case ('Destruir totalmente o exército vermelho.'):
+        break;
+        case ('Destruir totalmente o exército verde.'):
+        break;
+        case ('Destruir totalmente o exército rosa.'):
+        break;
+        case ('Destruir totalmente o exército laranja.'):
+        break;
+        case ('Destruir totalmente o exército azul.'):
+        break;
+    }
+}
