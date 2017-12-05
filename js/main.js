@@ -99,8 +99,8 @@ continents['valonguinho'].territories.push('bio');
 continents['valonguinho'].territories.push('odonto');
 continents['valonguinho'].territories.push('ana');
 continents['valonguinho'].territories.push('biomed');
-continents['UCI'].territories.push('iacas1');
-continents['UCI'].territories.push('iacas2');
+continents['UCI'].territories.push('iacs1');
+continents['UCI'].territories.push('iacs2');
 continents['UCI'].territories.push('dir');
 continents['UCI'].territories.push('eco');
 
@@ -143,15 +143,10 @@ goal_cards = [
     'Conquistar 18 territórios à sua escolha.',
     'Conquistar 16 territórios com ao menos 2 exércitos à sua escolha.',
     'Destruir totalmente o exército vermelho.',
+    'Destruir totalmente o exército azul.',
     'Destruir totalmente o exército verde.',
     'Destruir totalmente o exército rosa.',
-    'Destruir totalmente o exército laranja.',
-    'Destruir totalmente o exército azul.',
-    'obj11',
-    'obj12',
-    'obj13',
-    'obj14',
-    'obj15'
+    'Destruir totalmente o exército laranja.'
 ]
 
 territory_cards = [
