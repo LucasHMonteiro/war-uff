@@ -418,27 +418,39 @@ function realloc_confirm() {
 
 function contains_continent(territories, continent_territories) {
     for (var i = 0; i < continent_territories.length; i++) {
-        if (!territories.contains(continent_territories)) return false;
+        if (territories.indexOf(continent_territories[i]) == -1) return false;
     }
     return true;
+}
+
+function count_territories_with_2t(player_territories) {
+    territories_with_2t = 0;
+    for (var i = 0; i < player_territories.length; i++) {
+        if (territories[player_territories[i]].troops >= 2) territories_with_2t++;
+    }
+    if (territories_with_2t >= 16) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function objective_check(objective) {
     current_player = names[turnsManager.currentPlayer];
     switch (objective) {
         case ('Conquistar Praia Vermelha em sua totalidade.'):
-            if (contains_continent(players[current_player].territories, continents['praia-vermelha'])) {
+            if (contains_continent(players[current_player].territories, continents['praia-vermelha'].territories)) {
                 console.log(current_player + " Venceu!!!");
             }
             break;
         case ('Conquistar Gragoatá em sua totalidade.'):
-            if (contains_continent(players[current_player].territories, continents['gragoata'])) {
+            if (contains_continent(players[current_player].territories, continents['gragoata'].territories)) {
                 console.log(current_player + " Venceu!!!");
             }
             break;
         case ('Conquistar Valonguinho e a União dos Campi Independentes em suas totalidades.'):
-            if (contains_continent(players[current_player].territories, continents['valonguinho'])
-                && (contains_continent(players[current_player].territories, continents['UCI']))) {
+            if (contains_continent(players[current_player].territories, continents['valonguinho'].territories)
+                && (contains_continent(players[current_player].territories, continents['UCI'].territories))) {
                 console.log(current_player + " Venceu!!!");
             }
             break;
@@ -448,52 +460,24 @@ function objective_check(objective) {
             }
             break;
         case ('Conquistar 16 territórios com ao menos 2 exércitos à sua escolha.'):
-            if (function () {
-                territories_with_2t = 0;
-                for (var i = 0; i < players[current_player].territories.length; i++) {
-                    if (territories[players[current_player].territories[i]].troops >= 2) territories_with_2t++;
-                }
-                if (territories_with_2t >= 16) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }) {
+            if (count_territories_with_2t(players[current_player].territories)) {
                 console.log(current_player + " Venceu!!!");
             }
             break;
         case ('Destruir totalmente o exército vermelho.'):
-            if (names[0] == null) {
-                if (players[current_player].territories.length >= 18) {
-                    console.log(current_player + " Venceu!!!");
-                }
-            } else {
-                if (players[names[0]].territories[0] == null) {
-                    console.log(current_player + " Venceu!!!");
-                }
+            if (players[names[0]].territories[0] == null) {
+                console.log(current_player + " Venceu!!!");
             }
             break;
         case ('Destruir totalmente o exército azul.'):
-            if (names[1] == null) {
-                if (players[current_player].territories.length >= 18) {
-                    console.log(current_player + " Venceu!!!");
-                }
-            } else {
                 if (players[names[1]].territories[0] == null) {
                     console.log(current_player + " Venceu!!!");
                 }
-            }
             break;
         case ('Destruir totalmente o exército verde.'):
-            if (names[2] == null) {
-                if (players[current_player].territories.length >= 18) {
-                    console.log(current_player + " Venceu!!!");
-                }
-            } else {
                 if (players[names[2]].territories[0] == null) {
                     console.log(current_player + " Venceu!!!");
                 }
-            }
             break;
         case ('Destruir totalmente o exército rosa.'):
             if (names[3] == null) {
