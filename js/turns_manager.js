@@ -1,8 +1,8 @@
-
 function TurnsManager(players_names) {
   this.players_names = players_names;
   this.currentPlayer = 0;
   this.selected_territories = 0;
+  this.first_attack=false;
 
   this.setTurn = function (player) {
     li_names = document.getElementById('player_names').getElementsByTagName('li');
@@ -22,6 +22,7 @@ function TurnsManager(players_names) {
             if (this.classList.contains('taken-' + turnsManager.currentPlayer))
               alloc(this.classList[0]);
             self.showAllocMenu();
+            turnsManager.first_attack=true;
             break;
           case 'attack':
             if (self.selected_territories == 0) {

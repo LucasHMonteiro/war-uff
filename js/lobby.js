@@ -17,13 +17,13 @@ var lobbyInterval = setInterval(function(){
                 clearInterval(lobbyInterval);
                 names = formatNames(players_array);
                 goal_indexes = Array.apply(null, { length: goal_cards.length}).map(Number.call, Number);
-                territory_indexes = Array.apply(null, { length: territory_cards.length }).map(Number.call, Number);
+                // territory_indexes = Array.apply(null, { length: territory_cards.length }).map(Number.call, Number);
                 for (var index = 0; index < names.length; index++) {
                     cards = [
-                        popRandomElement(goal_indexes),
-                        popRandomElement(territory_indexes),
-                        popRandomElement(territory_indexes),
-                        popRandomElement(territory_indexes)
+                        popRandomElement(goal_indexes)
+                        // ,popRandomElement(territory_indexes),
+                        // popRandomElement(territory_indexes),
+                        // popRandomElement(territory_indexes)
                     ]
                     console.log(cards);
                     players[names[index]] = new Player(names[index], index, cards.join(), players_ids[index]);

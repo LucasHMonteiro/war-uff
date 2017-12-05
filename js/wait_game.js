@@ -19,6 +19,7 @@ var waitInterval = setInterval(function(){
             if(check_cards(players_array)){
                 me = players_array.filter(e => e.identity == identity);
                 my_cards = me[0].attributes.split(',').map(x => parseInt(x));
+                console.log("my_cards: " + my_cards);
                 my_goal = [goal_cards[my_cards[0]]];
                 my_territories = my_cards.slice(1).map(i => territory_cards[i]);
                 my_cards = my_goal.concat(my_territories);

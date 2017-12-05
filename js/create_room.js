@@ -31,9 +31,9 @@ create.onclick = function(){
         $("#content").load("lobby.html");
     });
 }
-// create.onclick = function () {
-//     room_code = 'Q24X7';
-//     $(function () {
-//         $("#content").load("lobby.html");
-//     });
-// }
+create.onclick = function () {
+    room_code = 'Q24X7';
+    $(function () {
+        $("#content").load("lobby.html");
+    });
+}

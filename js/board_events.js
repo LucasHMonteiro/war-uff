@@ -380,6 +380,12 @@ function attack_confirm() {
                 target_territory = document.getElementsByClassName(destiny)[0];
                 target_territory.classList.remove('taken-' + names.indexOf(defender_name));
                 target_territory.classList.add('taken-' + turnsManager.currentPlayer);
+                if(turnsManager.first_attack){
+                    new_card = popRandomElement(territory_cards);
+                    console.log(new_card);
+                    players[names[turnsManager.currentPlayer]].territory_cards.push(new_card);
+                    turnsManager.first_attack=false;
+                }
             } else {
                 territories[destiny].troops -= win_rolls;
                 territories[origin].troops -= Math.min(troops_attacking, troops_defending - win_rolls);
