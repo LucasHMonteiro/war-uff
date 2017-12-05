@@ -91,38 +91,40 @@ goal_cards = [
     'obj15'
 ]
 
-terr_cards = [
-    'Biomédico',
-    'Cantareira',
-    'Economia',
-    'Direito',
-    'IACS 1',
-    'IACS 2',
-    'Biblioteca',
-    'Psicologia',
-    'Moradia',
-    'Letras',
-    'Bandejão',
-    'Matemática',
-    'Quadras',
-    'Educação Física',
-    'DCE',
-    'Administração',
-    'Biologia',
-    'Odontologia',
-    'Anatomia',
-    'Escola de Arquitetura e Urbanismo',
-    'Bandejão',
-    'Escola de Engenharia',
-    'Instituto de Química',
-    'Instituto de Computação',
-    'Instituto de Geociências',
-    'Instituto de Física',
-    'Bloco H',
-    'Casa Verde'
+territory_cards = [
+    'Biomédico:triangle',
+    'Cantareira:triangle',
+    'Economia:triangle',
+    'Direito:circle',
+    'IACS 1:circle',
+    'IACS 2:circle',
+    'Biblioteca:square',
+    'Psicologia:square',
+    'Moradia:square',
+    'Letras:triangle',
+    'Bandejão:triangle',
+    'Matemática:triangle',
+    'Quadras:circle',
+    'Educação Física:circle',
+    'DCE:circle',
+    'Administração:square',
+    'Biologia:square',
+    'Odontologia:square',
+    'Anatomia:triangle',
+    'Escola de Arquitetura e Urbanismo:triangle',
+    'Bandejão:triangle',
+    'Escola de Engenharia:circle',
+    'Instituto de Química:circle',
+    'Instituto de Computação:circle',
+    'Instituto de Geociências:square',
+    'Instituto de Física:square',
+    'Bloco H:square',
+    'Casa Verde:triangle'
 ]
 
 my_cards = []
+my_goals = []
+my_territories = []
 
 function popRandomElement(array) {
     return array.splice(Math.floor(Math.random() * array.length), 1);

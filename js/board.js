@@ -9,7 +9,7 @@ set_goals_interval = setInterval(function () {
   }).then(function (myBlob) {
     if (players_counter < names.length){
       if(players_counter+1 == names.length){
-        console.log('hey');
+        console.log('');
         clearInterval(set_goals_interval);
       }
       players_counter++;
@@ -50,7 +50,6 @@ function boardInit() {
         target_territory_index = Math.floor(Math.random() * (territories_names.length - 1));
         name = territories_names[target_territory_index];
         target_territory = document.getElementsByClassName(name)[0];
-        console.log(target_territory_index, name, territories_names);
         target_territory.classList.add('taken-' + i % names.length);
         players[names[i % names.length]].territories.push(name);
         territories_names.splice(target_territory_index, 1);

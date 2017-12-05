@@ -1,6 +1,5 @@
 function updateTerritory(objClass, territory) {
     t = territories[objClass];
-    console.log(objClass);
     territory.innerHTML = '<p>' + territories_true_names[objClass] + '</p>' + '<p>' + t.owner + '</p>' + '<p>Tropas: ' + t.troops + '</p>';
 }
 
@@ -38,7 +37,7 @@ tooltips['casav'] = document.querySelector('#casav-tooltip'); updateTerritory('c
 tippy('.dce', {
     html: tooltips['dce'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -10,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -46,7 +45,7 @@ tippy('.dce', {
 tippy('.adm', {
     html: tooltips['adm'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -10,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -54,7 +53,7 @@ tippy('.adm', {
 tippy('.bio', {
     html: tooltips['bio'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -10,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -62,7 +61,7 @@ tippy('.bio', {
 tippy('.odonto', {
     html: tooltips['odonto'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -10,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -70,7 +69,7 @@ tippy('.odonto', {
 tippy('.ana', {
     html: tooltips['ana'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -10,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -78,7 +77,7 @@ tippy('.ana', {
 tippy('.arq', {
     html: tooltips['arq'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -10,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -86,7 +85,7 @@ tippy('.arq', {
 tippy('.band2', {
     html: tooltips['band2'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -10,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -94,7 +93,7 @@ tippy('.band2', {
 tippy('.eng', {
     html: tooltips['eng'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -10,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -102,7 +101,7 @@ tippy('.eng', {
 tippy('.quim', {
     html: tooltips['quim'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -10,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -110,7 +109,7 @@ tippy('.quim', {
 tippy('.ic', {
     html: tooltips['ic'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -10,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -118,7 +117,7 @@ tippy('.ic', {
 tippy('.geoc', {
     html: tooltips['geoc'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -10,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -126,7 +125,7 @@ tippy('.geoc', {
 tippy('.fis', {
     html: tooltips['fis'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: 0,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -134,7 +133,7 @@ tippy('.fis', {
 tippy('.bh', {
     html: tooltips['bh'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: 0,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -142,7 +141,7 @@ tippy('.bh', {
 tippy('.casav', {
     html: tooltips['casav'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -10,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -150,7 +149,7 @@ tippy('.casav', {
 tippy('.bib', {
     html: tooltips['bib'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -40,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -158,7 +157,7 @@ tippy('.bib', {
 tippy('.psi', {
     html: tooltips['psi'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -40,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -166,7 +165,7 @@ tippy('.psi', {
 tippy('.aloj', {
     html: tooltips['aloj'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -40,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -174,7 +173,7 @@ tippy('.aloj', {
 tippy('.canta', {
     html: tooltips['canta'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: 15,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -182,7 +181,7 @@ tippy('.canta', {
 tippy('.let', {
     html: tooltips['let'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -20,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -190,7 +189,7 @@ tippy('.let', {
 tippy('.band1', {
     html: tooltips['band1'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -20,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -198,7 +197,7 @@ tippy('.band1', {
 tippy('.mat', {
     html: tooltips['mat'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -20,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -206,7 +205,7 @@ tippy('.mat', {
 tippy('.quadras', {
     html: tooltips['quadras'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -20,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -214,7 +213,7 @@ tippy('.quadras', {
 tippy('.edfi', {
     html: tooltips['edfi'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: -20,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -222,7 +221,7 @@ tippy('.edfi', {
 tippy('.eco', {
     html: tooltips['eco'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: 15,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -230,7 +229,7 @@ tippy('.eco', {
 tippy('.dir', {
     html: tooltips['dir'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: 15,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -238,7 +237,7 @@ tippy('.dir', {
 tippy('.iacs1', {
     html: tooltips['iacs1'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: 15,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -246,7 +245,7 @@ tippy('.iacs1', {
 tippy('.iacs2', {
     html: tooltips['iacs2'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: 15,
     arrowTransform: 'scale(2)',
     theme: 'war'
@@ -254,7 +253,7 @@ tippy('.iacs2', {
 tippy('.biomed', {
     html: tooltips['biomed'],
     arrow: true,
-    animation: 'fade',
+    animation: 'shift-away',
     distance: 15,
     arrowTransform: 'scale(2)',
     theme: 'war'
