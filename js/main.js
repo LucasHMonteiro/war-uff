@@ -69,6 +69,41 @@ territories['fis'].setAdjacent('bh'); territories['fis'].setAdjacent('casav');
 //bh ja teve sua vizinhança feita acima
 territories['casav'].setAdjacent('bh');
 
+continents = {
+    'praia-vermelha' : new continent('pv'),
+    'gragoata' : new continent('grag'),
+    'valonguinho': new continent('valong'),
+    'UCI' : new continent('uci')
+}
+continents['praia-vermelha'].territories.push('band2');
+continents['praia-vermelha'].territories.push('eng');
+continents['praia-vermelha'].territories.push('quim');
+continents['praia-vermelha'].territories.push('ic');
+continents['praia-vermelha'].territories.push('geoc');
+continents['praia-vermelha'].territories.push('fis');
+continents['praia-vermelha'].territories.push('bh');
+continents['praia-vermelha'].territories.push('casav');
+continents['praia-vermelha'].territories.push('arq');
+continents['gragoata'].territories.push('bib');
+continents['gragoata'].territories.push('psi');
+continents['gragoata'].territories.push('aloj');
+continents['gragoata'].territories.push('let');
+continents['gragoata'].territories.push('band1');
+continents['gragoata'].territories.push('mat');
+continents['gragoata'].territories.push('quadras');
+continents['gragoata'].territories.push('edfi');
+continents['gragoata'].territories.push('canta');
+continents['valonguinho'].territories.push('dce');
+continents['valonguinho'].territories.push('adm');
+continents['valonguinho'].territories.push('bio');
+continents['valonguinho'].territories.push('odonto');
+continents['valonguinho'].territories.push('ana');
+continents['valonguinho'].territories.push('biomed');
+continents['UCI'].territories.push('iacas1');
+continents['UCI'].territories.push('iacas2');
+continents['UCI'].territories.push('dir');
+continents['UCI'].territories.push('eco');
+
 territories_true_names = {
     'biomed': 'Biomédico',
     'canta': 'Cantareira',
@@ -80,7 +115,7 @@ territories_true_names = {
     'psi': 'Psicologia',
     'aloj': 'Moradia',
     'let': 'Letras',
-    'band1': 'Bandejão',
+    'band1': 'Bandejão Gragoatá',
     'mat': 'Matemática',
     'quadras': 'Quadras',
     'edfi': 'Educação Física',
@@ -90,7 +125,7 @@ territories_true_names = {
     'odonto': 'Odontologia',
     'ana': 'Anatomia',
     'arq': 'Escola de Arquitetura e Urbanismo',
-    'band2': 'Bandejão',
+    'band2': 'Bandejão PV',
     'eng': 'Escola de Engenharia',
     'quim': 'Instituto de Química',
     'ic': 'Instituto de Computação',
@@ -102,16 +137,16 @@ territories_true_names = {
 phase = 'alloc';
 
 goal_cards = [
-    'obj1',
-    'obj2',
-    'obj3',
-    'obj4',
-    'obj5',
-    'obj6',
-    'obj7',
-    'obj8',
-    'obj9',
-    'obj10',
+    'Conquistar Praia Vermelha em sua totalidade.',
+    'Conquistar Gragoatá em sua totalidade.',
+    'Conquistar Valonguinho e a União dos Campi Independentes em suas totalidades.',
+    'Conquistar 18 territórios à sua escolha.',
+    'Conquistar 16 territórios com ao menos 2 exércitos à sua escolha.',
+    'Destruir totalmente o exército vermelho.',
+    'Destruir totalmente o exército verde.',
+    'Destruir totalmente o exército rosa.',
+    'Destruir totalmente o exército laranja.',
+    'Destruir totalmente o exército azul.',
     'obj11',
     'obj12',
     'obj13',

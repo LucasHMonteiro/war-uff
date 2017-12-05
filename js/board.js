@@ -9,8 +9,9 @@ set_goals_interval = setInterval(function () {
   }).then(function (myBlob) {
     if (players_counter < names.length){
       if(players_counter+1 == names.length){
-        console.log('');
+        console.log(players_counter);
         clearInterval(set_goals_interval);
+        players_counter--;
       }
       players_counter++;
     }
@@ -98,6 +99,7 @@ next_turn.onclick = function () {
             phase = 'realloc';
             turnsManager.showReallocMenuIntro();
             document.getElementsByClassName('next-phase')[0].innerHTML = 'REALOCAR';
+            objective_check(players[names[turnsManager.currentPlayer]].goal_cards[0]);
             break;
           case 'realloc':
             console.log('Alloc')
