@@ -146,12 +146,7 @@ goal_cards = [
     'Destruir totalmente o exército verde.',
     'Destruir totalmente o exército rosa.',
     'Destruir totalmente o exército laranja.',
-    'Destruir totalmente o exército azul.',
-    'obj11',
-    'obj12',
-    'obj13',
-    'obj14',
-    'obj15'
+    'Destruir totalmente o exército azul.'
 ]
 
 territory_cards = [
