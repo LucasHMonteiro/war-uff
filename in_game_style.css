@@ -46,6 +46,10 @@
 	color: yellow;
 }
 
+.tooltip p {
+	margin: 15px 0;
+}
+
 .next-phase {
 	border: 3px double #990303;
 	border-radius: 5px;
