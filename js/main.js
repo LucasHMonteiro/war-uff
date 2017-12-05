@@ -40,6 +40,34 @@ territories = {
 // territories['iacs1'].setAdjacent('eco');
 // territories['eco'].setAdjacent('iacs2'); territories['eco'].setAdjacent('dir');
 // territories['pv'].setAdjacent('dir'); territories['pv'].setAdjacent('iacs1');
+territories['bib'].setAdjacent('let'); territories['bib'].setAdjacent('psi'); territories['bib'].setAdjacent('mat');
+territories['psi'].setAdjacent('aloj'); territories['psi'].setAdjacent('let');
+territories['aloj'].setAdjacent('bh');
+territories['canta'].setAdjacent('band1');territories['canta'].setAdjacent('arq');territories['canta'].setAdjacent('dce');territories['canta'].setAdjacent('iacs1');territories['canta'].setAdjacent('biomed');
+territories['let'].setAdjacent('band1');territories['let'].setAdjacent('quadras');territories['let'].setAdjacent('mat');
+territories['band1'].setAdjacent('quadras');
+territories['mat'].setAdjacent('quadras');
+territories['quadras'].setAdjacent('edfi');
+territories['edfi'].setAdjacent('dce');
+territories['biomed'].setAdjacent('iacs1');territories['biomed'].setAdjacent('ana');
+territories['iacs1'].setAdjacent('arq');territories['iacs1'].setAdjacent('eco');
+territories['eco'].setAdjacent('dir');territories['eco'].setAdjacent('iacs2');
+territories['dir'].setAdjacent('iacs2');territories['dir'].setAdjacent('quim');
+//iacs2 ja teve a vizinhança feita acima
+territories['dce'].setAdjacent('bio');territories['dce'].setAdjacent('adm');
+territories['adm'].setAdjacent('odonto');territories['adm'].setAdjacent('bio');
+territories['bio'].setAdjacent('ana');territories['bio'].setAdjacent('odonto');
+territories['odonto'].setAdjacent('ana');
+//ana ja teve sua vizinhanca feita acima
+territories['arq'].setAdjacent('eng');territories['arq'].setAdjacent('band2');
+territories['band2'].setAdjacent('eng');territories['band2'].setAdjacent('geoc'); territories['band2'].setAdjacent('ic');
+territories['eng'].setAdjacent('geoc');territories['eng'].setAdjacent('casav');
+territories['quim'].setAdjacent('ic'); 
+territories['ic'].setAdjacent('geoc');
+territories['geoc'].setAdjacent('casav'); territories['geoc'].setAdjacent('fis');
+territories['fis'].setAdjacent('bh'); territories['fis'].setAdjacent('casav');
+//bh ja teve sua vizinhança feita acima
+territories['casav'].setAdjacent('bh');
 
 territories_true_names = {
     'biomed': 'Biomédico',
