@@ -1,4 +1,4 @@
-function Player(name, index, goals,objective, id) {
+function Player(name, index, goals, id) {
     this.name = name;
     this.index = index;
     this.territories = [];

@@ -25,8 +25,8 @@ var lobbyInterval = setInterval(function(){
                         popRandomElement(territory_indexes),
                         popRandomElement(territory_indexes)
                     ]
-                    console.log(cards);
                     players[names[index]] = new Player(names[index], index, cards.join(), players_ids[index]);
+                    console.log(players);
                     }
                 $(function(){
                     $("#content").load("map.html");
