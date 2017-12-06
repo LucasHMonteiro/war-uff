@@ -277,13 +277,14 @@ function alloc(territory) {
 }
 
 function tradeMenu() {
-    document.getElementById('support-confirm').onclick =null;
-    document.getElementById('support-confirm').onclick = function () {
+    // document.getElementById('support-confirm').onclick =null;
+    // document.getElementById('support-confirm').onclick = function () {
+    document.getElementById('support-confirm').addEventListener('click', function () {
         if(players[names[turnsManager.currentPlayer]].territories_cards.length > 2){
             console.log("chamando trocar")
             makeTradeCards();
         }
-    };
+    });
 }
 
 function makeTradeCards() {
@@ -340,7 +341,7 @@ function makeTradeCards() {
     }
     if(players[names[turnsManager.currentPlayer]].territories_cards.length>2){
         if(vetDiff[0] && vetDiff[0]==vetDiff[1] && vetDiff[1]==vetDiff[2]){
-            console.log("3 cartas diferentes")
+            console.log("3 cartas diferentes, mais" + turnsManager.cards_trade*2)
             console.log("vetDiff " + vetDiff[0] + vetDiff[1] + vetDiff[2])
             players[names[turnsManager.currentPlayer]].troops+=(turnsManager.cards_trade++)*2
             vetCounter=[]

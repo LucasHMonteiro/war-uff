@@ -172,7 +172,7 @@ territory_cards = [
     'Escola de Arquitetura e Urbanismo:triangle',
     'Bandejão:triangle',
     'Escola de Engenharia:circle',
-    'Instituto de Química:circle',
+    // 'Instituto de Química:circle',
     // 'Instituto de Computação:circle',
     // 'Instituto de Geociências:square',
     // 'Instituto de Física:square',
