@@ -352,7 +352,6 @@ function roll_dices(attack, defense) {
     log.appendChild(show_dice_def);
     //  show_dice_def.style.display = 'inline-block';
     num_checks = Math.min(defense, attack);
-    console.log(show_dice_atk.innerHTML + " D  " + show_dice_def.innerHTML);
     win_rolls = 0;
     for (var k = 0; k < num_checks; k++) {
         if (attack_rolls[k] > defense_rolls[k]) win_rolls++;
@@ -372,7 +371,6 @@ function attack_confirm() {
                 troops_defending = territories[destiny].troops;
             }
             win_rolls = roll_dices(troops_attacking, troops_defending);
-            console.log(win_rolls);
             if (win_rolls >= troops_defending) {
                 defender_name = territories[destiny].owner;
                 players[defender_name].territories.splice(players[defender_name].territories.indexOf(destiny), 1);

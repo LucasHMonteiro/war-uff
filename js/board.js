@@ -9,7 +9,6 @@ set_goals_interval = setInterval(function () {
   }).then(function (myBlob) {
     if (players_counter < names.length) {
       if (players_counter + 1 == names.length) {
-        console.log(players_counter);
         clearInterval(set_goals_interval);
         //        players_counter--;
       } else {
@@ -99,11 +98,9 @@ next_turn.onclick = function () {
               phase = 'attack';
               turnsManager.showAttackMenuIntro();
               document.getElementsByClassName('next-phase')[0].innerHTML = 'REALOCAR';
-              console.log('Attack')
             }
             break;
           case 'attack':
-            console.log('Realloc')
             var log = document.getElementById('log-sidebar');
             var li = document.createElement("li");
             li.appendChild(document.createTextNode('Fase de realocação do jogador: ' + names[turnsManager.currentPlayer]))
@@ -119,7 +116,6 @@ next_turn.onclick = function () {
             objective_check(players[names[turnsManager.currentPlayer]].goal_cards[0]);
             break;
           case 'realloc':
-            console.log('Alloc')
             phase = 'alloc';
             turnsManager.nextTurn();
             players[names[turnsManager.currentPlayer]].calculateTroops();
