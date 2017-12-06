@@ -73,7 +73,7 @@ players[names[turnsManager.currentPlayer]].calculateTroops();
 first_loop = 0;
 var log = document.getElementById('log-sidebar');
 var li = document.createElement("li");
-li.appendChild(document.createTextNode('Fase alocação do jogador: ' + names[turnsManager.currentPlayer]))
+li.appendChild(document.createTextNode('Fase alocação do jogador: ' + names[names.length -1]))
 log.appendChild(li);
 next_turn.onclick = function () {
   if (players[names[turnsManager.currentPlayer]].troops == 0) {
@@ -82,7 +82,7 @@ next_turn.onclick = function () {
     var li = document.createElement("li");
     li.appendChild(document.createTextNode('Fase alocação do jogador: ' + names[turnsManager.currentPlayer]))
     log.appendChild(li);
-        players[names[turnsManager.currentPlayer]].calculateTroops();
+    players[names[turnsManager.currentPlayer]].calculateTroops();
     turnsManager.showAllocMenu();
     first_loop++;
     if (first_loop >= names.length) {
