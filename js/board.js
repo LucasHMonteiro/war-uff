@@ -71,9 +71,17 @@ turnsManager.showAllocMenu();
 next_turn = document.getElementsByClassName('next-phase')[0];
 players[names[turnsManager.currentPlayer]].calculateTroops();
 first_loop = 0;
+var log = document.getElementById('log-sidebar');
+var li = document.createElement("li");
+li.appendChild(document.createTextNode('Fase alocação do jogador: ' + names[names.length -1]))
+log.appendChild(li);
 next_turn.onclick = function () {
   if (players[names[turnsManager.currentPlayer]].troops == 0) {
     turnsManager.nextTurn();
+    var log = document.getElementById('log-sidebar');
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode('Fase alocação do jogador: ' + names[turnsManager.currentPlayer]))
+    log.appendChild(li);
     players[names[turnsManager.currentPlayer]].calculateTroops();
     turnsManager.showAllocMenu();
     first_loop++;
@@ -84,6 +92,10 @@ next_turn.onclick = function () {
         switch (phase) {
           case 'alloc':
             if (players[names[turnsManager.currentPlayer]].troops == 0) {
+              var log = document.getElementById('log-sidebar');
+              var li = document.createElement("li");
+              li.appendChild(document.createTextNode('Fase de ataque do jogador: ' + names[turnsManager.currentPlayer]))
+              log.appendChild(li);
               phase = 'attack';
               turnsManager.showAttackMenuIntro();
               document.getElementsByClassName('next-phase')[0].innerHTML = 'REALOCAR';
@@ -92,6 +104,10 @@ next_turn.onclick = function () {
             break;
           case 'attack':
             console.log('Realloc')
+            var log = document.getElementById('log-sidebar');
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode('Fase de realocação do jogador: ' + names[turnsManager.currentPlayer]))
+            log.appendChild(li);
             document.getElementById('support-troops').innerHTML = 0;
             document.getElementById('support-origin').innerHTML = "Origem";
             document.getElementById('support-destiny').innerHTML = "Destino";
@@ -109,6 +125,10 @@ next_turn.onclick = function () {
             players[names[turnsManager.currentPlayer]].calculateTroops();
             turnsManager.showAllocMenu();
             document.getElementsByClassName('next-phase')[0].innerHTML = 'ATACAR';
+            var log = document.getElementById('log-sidebar');
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode('Fase de alocação do jogador: ' + names[turnsManager.currentPlayer ]));
+            log.appendChild(li);
             break;
           default:
             break;

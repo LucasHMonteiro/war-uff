@@ -332,10 +332,9 @@ function realloc_menu() {
 function roll_dices(attack, defense) {
     attack_rolls = [];
     defense_rolls = [];
-    show_dice_atk = document.getElementById('dice-atk');
-    show_dice_def = document.getElementById('dice-def');
-    show_dice_atk.innerHTML = "Dados de Ataque";
-    show_dice_def.innerHTML = "Dados de Defesa";
+    var log = document.getElementById('log-sidebar');
+    show_dice_atk = document.createElement('li');
+    show_dice_def = document.createElement('li');
     for (var i = 0; i < defense; i++) {
         var roll = Math.floor((Math.random() * 6) + 1);
         defense_rolls.push(roll);
@@ -346,9 +345,11 @@ function roll_dices(attack, defense) {
     }
     attack_rolls.reverse(attack_rolls.sort());
     defense_rolls.reverse(defense_rolls.sort());
-    show_dice_atk.innerHTML = attack_rolls;
+    show_dice_atk.appendChild(document.createTextNode('Dados de ataque: ' + attack_rolls));
+    log.appendChild(show_dice_atk);
     //  show_dice_atk.style.display = 'inline-block';
-    show_dice_def.innerHTML = defense_rolls;
+    show_dice_def.appendChild(document.createTextNode('Dados de defesa: ' + defense_rolls));
+    log.appendChild(show_dice_def);
     //  show_dice_def.style.display = 'inline-block';
     num_checks = Math.min(defense, attack);
     console.log(show_dice_atk.innerHTML + " D  " + show_dice_def.innerHTML);
@@ -442,64 +443,100 @@ function objective_check(objective) {
     switch (objective) {
         case ('Conquistar Praia Vermelha em sua totalidade.'):
             if (contains_continent(players[current_player].territories, continents['praia-vermelha'].territories)) {
-                console.log(current_player + " Venceu!!!");
+                var log = document.getElementById('log-sidebar');
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(current_player + " Venceu!!!"));
+                log.appendChild(li);
             }
             break;
         case ('Conquistar Gragoatá em sua totalidade.'):
             if (contains_continent(players[current_player].territories, continents['gragoata'].territories)) {
-                console.log(current_player + " Venceu!!!");
+                var log = document.getElementById('log-sidebar');
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(current_player + " Venceu!!!"));
+                log.appendChild(li);
             }
             break;
         case ('Conquistar Valonguinho e a União dos Campi Independentes em suas totalidades.'):
             if (contains_continent(players[current_player].territories, continents['valonguinho'].territories)
                 && (contains_continent(players[current_player].territories, continents['UCI'].territories))) {
-                console.log(current_player + " Venceu!!!");
+                var log = document.getElementById('log-sidebar');
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(current_player + " Venceu!!!"));
+                log.appendChild(li);
             }
             break;
         case ('Conquistar 18 territórios à sua escolha.'):
             if (players[current_player].territories.length >= 18) {
-                console.log(current_player + " Venceu!!!");
+                var log = document.getElementById('log-sidebar');
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(current_player + " Venceu!!!"));
+                log.appendChild(li);
             }
             break;
         case ('Conquistar 16 territórios com ao menos 2 exércitos à sua escolha.'):
             if (count_territories_with_2t(players[current_player].territories)) {
-                console.log(current_player + " Venceu!!!");
+                var log = document.getElementById('log-sidebar');
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(current_player + " Venceu!!!"));
+                log.appendChild(li);
             }
             break;
         case ('Destruir totalmente o exército vermelho.'):
             if (players[names[0]].territories[0] == null) {
-                console.log(current_player + " Venceu!!!");
+                var log = document.getElementById('log-sidebar');
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(current_player + " Venceu!!!"));
+                log.appendChild(li);
             }
             break;
         case ('Destruir totalmente o exército azul.'):
-                if (players[names[1]].territories[0] == null) {
-                    console.log(current_player + " Venceu!!!");
-                }
+            if (players[names[1]].territories[0] == null) {
+                var log = document.getElementById('log-sidebar');
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(current_player + " Venceu!!!"));
+                log.appendChild(li);
+            }
             break;
         case ('Destruir totalmente o exército verde.'):
-                if (players[names[2]].territories[0] == null) {
-                    console.log(current_player + " Venceu!!!");
-                }
+            if (players[names[2]].territories[0] == null) {
+                var log = document.getElementById('log-sidebar');
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(current_player + " Venceu!!!"));
+                log.appendChild(li);
+            }
             break;
         case ('Destruir totalmente o exército rosa.'):
             if (names[3] == null) {
                 if (players[current_player].territories.length >= 18) {
-                    console.log(current_player + " Venceu!!!");
+                    var log = document.getElementById('log-sidebar');
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(current_player + " Venceu!!!"));
+                    log.appendChild(li);
                 }
             } else {
                 if (players[names[3]].territories[0] == null) {
-                    console.log(current_player + " Venceu!!!");
+                    var log = document.getElementById('log-sidebar');
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(current_player + " Venceu!!!"));
+                    log.appendChild(li);
                 }
             }
             break;
         case ('Destruir totalmente o exército laranja.'):
             if (names[4] == null) {
                 if (players[current_player].territories.length >= 18) {
-                    console.log(current_player + " Venceu!!!");
+                    var log = document.getElementById('log-sidebar');
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(current_player + " Venceu!!!"));
+                    log.appendChild(li);
                 }
             } else {
                 if (players[names[4]].territories[0] == null) {
-                    console.log(current_player + " Venceu!!!");
+                    var log = document.getElementById('log-sidebar');
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(current_player + " Venceu!!!"));
+                    log.appendChild(li);
                 }
             }
             break;
