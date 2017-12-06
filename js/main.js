@@ -173,11 +173,11 @@ territory_cards = [
     'Bandejão:triangle',
     'Escola de Engenharia:circle',
     'Instituto de Química:circle',
-    'Instituto de Computação:circle',
-    'Instituto de Geociências:square',
-    'Instituto de Física:square',
-    'Bloco H:square',
-    'Casa Verde:triangle'
+    // 'Instituto de Computação:circle',
+    // 'Instituto de Geociências:square',
+    // 'Instituto de Física:square',
+    // 'Bloco H:square',
+    // 'Casa Verde:triangle'
 ]
 
 my_cards = []

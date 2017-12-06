@@ -277,27 +277,38 @@ function alloc(territory) {
 }
 
 function tradeMenu() {
-    document.getElementById('support-confirm').addEventListener('click', function () {
+    document.getElementById('support-confirm').onclick =null;
+    document.getElementById('support-confirm').onclick = function () {
         if(players[names[turnsManager.currentPlayer]].territories_cards.length > 2){
+            console.log("chamando trocar")
             makeTradeCards();
         }
-    });
+    };
 }
 
 function makeTradeCards() {
     cards = players[names[turnsManager.currentPlayer]].territories_cards;
+    // console.log("cards " + cards)
     auxCards = [];
-    for(elem in cards){
+    for(i=0;i<cards.length;i++){
+        elem=cards[i]
+        // console.log("elem " + elem)
         auxElem= elem.split(":")
+        // console.log("auxElem " + auxElem)
         auxCards.push(auxElem[1])
+        // console.log("auxCards " + auxCards)
     }
     vetDiff=[false,false,false]
     comparador = ["square","circle","triangle"]
-    for(elem in comparador){
+    for(j=0;j<comparador.length;j++){
+        elem=comparador[j]
+        console.log("elem_comparador " + elem)
         counter=0;
         vetCounter=[];
         for(i=0; i<auxCards.length; i++){
+            console.log("auxCards[i] " + auxCards[i])
             if(auxCards[i] == elem){
+                console.log("entrou na cmp")
                 counter++;
                 vetCounter.push(i);
                 switch(elem){
@@ -314,15 +325,60 @@ function makeTradeCards() {
             }
         }
         if(counter==3){
+            console.log("3 cartas iguais, mais " + turnsManager.cards_trade*2)
+            players[names[turnsManager.currentPlayer]].troops+=(turnsManager.cards_trade++)*2
+            console.log("removendo index " + vetCounter)
+            auxPos=0;
             for(i=0;i<vetCounter.length;i++){
-                old_card = players[names[turnsManager.currentPlayer]].territories_cards.splice(vetCounter[i],1)
+                old_card = players[names[turnsManager.currentPlayer]].territories_cards.splice(vetCounter[i]-auxPos,1)
+                console.log("removendo a carta " + old_card[0])
                 territory_cards.push(old_card[0])
-                players[names[turnsManager.currentPlayer]].troops+=(turnsManager.cards_trade++)*2
+                auxPos++;
             }
             break;
         }
     }
-    
+    if(players[names[turnsManager.currentPlayer]].territories_cards.length>2){
+        if(vetDiff[0] && vetDiff[0]==vetDiff[1] && vetDiff[1]==vetDiff[2]){
+            console.log("3 cartas diferentes")
+            console.log("vetDiff " + vetDiff[0] + vetDiff[1] + vetDiff[2])
+            players[names[turnsManager.currentPlayer]].troops+=(turnsManager.cards_trade++)*2
+            vetCounter=[]
+            marcado=false;
+            for(j=0;j<3;j++){
+                for(i=0;i<auxCards.length;i++){
+                    switch(j){
+                        case 0:
+                            if(auxCards[i] == "square"){
+                                vetCounter.push(i)
+                                marcado=true
+                            }
+                            break;
+                        case 1:
+                            if(auxCards[i] == "circle"){
+                                vetCounter.push(i)
+                                marcado=true
+                            }
+                            break;
+                        case 2:
+                            if(auxCards[i] == "triangle"){
+                                vetCounter.push(i)
+                                marcado=true
+                            }
+                            break;
+                    }
+                    if(marcado)break;
+                }
+            }
+            auxPos=0;
+            for(i=0;i<vetCounter.length;i++){
+                old_card = players[names[turnsManager.currentPlayer]].territories_cards.splice(vetCounter[i]-auxPos,1)
+                console.log("removendo a carta " + old_card[0])
+                territory_cards.push(old_card[0])
+                auxPos++;
+            }
+        }
+    }
 
 }
 

@@ -83,6 +83,10 @@ next_turn.onclick = function () {
       next_turn.onclick = function () {
         switch (phase) {
           case 'alloc':
+            if(players[names[turnsManager.currentPlayer]].territories_cards.length == 5){
+              console.log("too many cards")
+              makeTradeCards();
+            }
             if (players[names[turnsManager.currentPlayer]].troops == 0) {
               phase = 'attack';
               turnsManager.showAttackMenuIntro();
