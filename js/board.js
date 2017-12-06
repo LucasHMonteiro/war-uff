@@ -98,6 +98,7 @@ next_turn.onclick = function () {
               phase = 'attack';
               turnsManager.showAttackMenuIntro();
               document.getElementsByClassName('next-phase')[0].innerHTML = 'REALOCAR';
+              objective_check(goal_cards[players[names[turnsManager.currentPlayer]].goal_cards[0]]);
             }
             break;
           case 'attack':
@@ -113,10 +114,11 @@ next_turn.onclick = function () {
             phase = 'realloc';
             turnsManager.showReallocMenuIntro();
             document.getElementsByClassName('next-phase')[0].innerHTML = 'PRÓXIMO';
-            objective_check(players[names[turnsManager.currentPlayer]].goal_cards[0]);
+            objective_check(goal_cards[players[names[turnsManager.currentPlayer]].goal_cards[0]]);
             break;
           case 'realloc':
             phase = 'alloc';
+            objective_check(goal_cards[players[names[turnsManager.currentPlayer]].goal_cards[0]]);
             turnsManager.nextTurn();
             players[names[turnsManager.currentPlayer]].calculateTroops();
             turnsManager.showAllocMenu();
