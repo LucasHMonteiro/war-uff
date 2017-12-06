@@ -276,6 +276,56 @@ function alloc(territory) {
     }
 }
 
+function tradeMenu() {
+    document.getElementById('support-confirm').addEventListener('click', function () {
+        if(players[names[turnsManager.currentPlayer]].territories_cards.length > 2){
+            makeTradeCards();
+        }
+    });
+}
+
+function makeTradeCards() {
+    cards = players[names[turnsManager.currentPlayer]].territories_cards;
+    auxCards = [];
+    for(elem in cards){
+        auxElem= elem.split(":")
+        auxCards.push(auxElem[1])
+    }
+    vetDiff=[false,false,false]
+    comparador = ["square","circle","triangle"]
+    for(elem in comparador){
+        counter=0;
+        vetCounter=[];
+        for(i=0; i<auxCards.length; i++){
+            if(auxCards[i] == elem){
+                counter++;
+                vetCounter.push(i);
+                switch(elem){
+                    case "square":
+                        vetDiff[0]=true;
+                        break;
+                    case "circle":
+                        vetDiff[1]=true;
+                        break;
+                    case "triangle":
+                        vetDiff[2]=true;
+                        break;
+                }
+            }
+        }
+        if(counter==3){
+            for(i=0;i<vetCounter.length;i++){
+                old_card = players[names[turnsManager.currentPlayer]].territories_cards.splice(vetCounter[i],1)
+                territory_cards.push(old_card[0])
+                players[names[turnsManager.currentPlayer]].troops+=(turnsManager.cards_trade++)*2
+            }
+            break;
+        }
+    }
+    
+
+}
+
 function attack_menu() {
     document.getElementById('support-cancel').addEventListener('click', function () {
         turnsManager.showReallocMenuIntro();
@@ -383,7 +433,7 @@ function attack_confirm() {
                 if(turnsManager.first_attack){
                     new_card = popRandomElement(territory_cards);
                     console.log(new_card);
-                    players[names[turnsManager.currentPlayer]].territories_cards.push(new_card);
+                    players[names[turnsManager.currentPlayer]].territories_cards.push(new_card[0]);
                     turnsManager.first_attack=false;
                 }
             } else {

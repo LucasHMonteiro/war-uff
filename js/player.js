@@ -8,5 +8,6 @@ function Player(name, index, goals,objective, id) {
     this.id = id;
     this.calculateTroops = function() {
         this.troops = Math.max(2,Math.floor(this.territories.length/2));
+        if(this.territories_cards.length == 5)makeTradeCards();
      }
 }

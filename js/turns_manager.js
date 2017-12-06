@@ -3,6 +3,7 @@ function TurnsManager(players_names) {
   this.currentPlayer = 0;
   this.selected_territories = 0;
   this.first_attack=false;
+  this.cards_trade=1;
 
   this.setTurn = function (player) {
     li_names = document.getElementById('player_names').getElementsByTagName('li');
@@ -22,6 +23,7 @@ function TurnsManager(players_names) {
             if (this.classList.contains('taken-' + turnsManager.currentPlayer))
               alloc(this.classList[0]);
             self.showAllocMenu();
+            tradeMenu();
             turnsManager.first_attack=true;
             break;
           case 'attack':
@@ -86,7 +88,8 @@ function TurnsManager(players_names) {
 //    document.getElementById('support-menu').style.display = 'none';
     document.getElementById('support-troops').style.display = 'none';
     document.getElementById('support-cancel').style.display = 'none';
-    document.getElementById('support-confirm').style.display = 'none';
+    document.getElementById('support-confirm').style.display = 'inline-block';
+    document.getElementById('support-confirm').style.innerHTML = "Trocar Cartas";
     document.getElementById('support-plus').style.display = 'none';
     document.getElementById('support-minus').style.display = 'none';
     document.getElementById('support-origin').style.display = 'none';
