@@ -84,6 +84,10 @@ next_turn.onclick = function () {
         switch (phase) {
           case 'alloc':
             if (players[names[turnsManager.currentPlayer]].troops == 0) {
+              var log = document.getElementById('log-sidebar');
+              var li = document.createElement("li");
+              li.appendChild(document.createTextNode('Fase de ataque do jogador: ' + names[turnsManager.currentPlayer]))
+              log.appendChild(li);
               phase = 'attack';
               turnsManager.showAttackMenuIntro();
               document.getElementsByClassName('next-phase')[0].innerHTML = 'REALOCAR';
@@ -92,6 +96,10 @@ next_turn.onclick = function () {
             break;
           case 'attack':
             console.log('Realloc')
+            var log = document.getElementById('log-sidebar');
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode('Fase de realocação do jogador: ' + names[turnsManager.currentPlayer]))
+            log.appendChild(li);
             document.getElementById('support-troops').innerHTML = 0;
             document.getElementById('support-origin').innerHTML = "Origem";
             document.getElementById('support-destiny').innerHTML = "Destino";
@@ -109,6 +117,10 @@ next_turn.onclick = function () {
             players[names[turnsManager.currentPlayer]].calculateTroops();
             turnsManager.showAllocMenu();
             document.getElementsByClassName('next-phase')[0].innerHTML = 'ATACAR';
+            var log = document.getElementById('log-sidebar');
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode('Fase de alocação do jogador: ' + names[turnsManager.currentPlayer ]));
+            log.appendChild(li);
             break;
           default:
             break;
