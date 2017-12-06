@@ -383,7 +383,7 @@ function attack_confirm() {
                 if(turnsManager.first_attack){
                     new_card = popRandomElement(territory_cards);
                     console.log(new_card);
-                    players[names[turnsManager.currentPlayer]].territory_cards.push(new_card);
+                    players[names[turnsManager.currentPlayer]].territories_cards.push(new_card);
                     turnsManager.first_attack=false;
                 }
             } else {
